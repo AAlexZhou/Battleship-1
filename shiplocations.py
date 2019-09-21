@@ -1,12 +1,7 @@
-"""
-Array Backed Grid
 
-Show how to use a two-dimensional list/array to back the display of a
-grid on-screen.
-
-If Python and Arcade are installed, this example can be run from the command line with:
-python -m arcade.examples.array_backed_grid_buffered
-"""
+"""""
+Need a player passed to me with number of player
+"""""
 import arcade
 from board import Board
 from ship import Ship, Direction
@@ -32,11 +27,6 @@ SCREEN_WIDTH = (WIDTH + MARGIN) * COLUMN_COUNT + MARGIN + OFFSET_AXIS_LABEL
 SCREEN_HEIGHT = (HEIGHT + MARGIN) * ROW_COUNT + MARGIN + OFFSET_AXIS_LABEL + OFFSET_BUTTON
 SCREEN_TITLE = "BATTLESHIP"
 
-LENGTH_OF_SHIP = 5
-
-
-row = 0
-column = 0
 
 class MyGame(arcade.Window):
     """
@@ -49,7 +39,13 @@ class MyGame(arcade.Window):
         """
         super().__init__(width, height, title)
 
+        self.board = Board()
+
         self.shape_list = None
+        self.length_of_ship = 5
+        self.row = 0
+        self.column = 0
+        self.direction = Direction.RIGHT
 
         # Create a 2 dimensional array. A two dimensional
         # array is simply a list of lists.
@@ -102,8 +98,11 @@ class MyGame(arcade.Window):
         """
 
         # Change the x/y screen coordinates to grid coordinates
-        column = (x - OFFSET_AXIS_LABEL) // (WIDTH + MARGIN)
-        row = y // (HEIGHT + MARGIN)
+        self.column = (x - OFFSET_AXIS_LABEL) // (WIDTH + MARGIN)
+        self.row = y // (HEIGHT + MARGIN)
+
+        row = self.row
+        column = self.column
 
         print(f"Click coordinates: ({x}, {y}). Grid coordinates: ({row}, {column})")
 
@@ -113,28 +112,52 @@ class MyGame(arcade.Window):
 
             i = 0
             # Flip the location between 1 and 0.
-            if self.grid[row][column] == 0:
-                for i in range (LENGTH_OF_SHIP):
-                    if row < ROW_COUNT and column < COLUMN_COUNT:
-                        self.grid[row][column + i] = 1
-            else:
-                for i in range(LENGTH_OF_SHIP):
-                    if row < ROW_COUNT and column < COLUMN_COUNT:
-                        self.grid[row][column + i] = 0
-                    if row < ROW_COUNT and column < COLUMN_COUNT:
-                        self.grid[row][column - i] = 0
+            if(self.direction == Direction.RIGHT):
+                if self.grid[row][column] == 0:
+                    for i in range(self.length_of_ship):
+                        if row < ROW_COUNT and column < COLUMN_COUNT:
+                            self.grid[row][column + i] = 1
+                else:
+                    for i in range(self.length_of_ship):
+                        if row < ROW_COUNT and column < COLUMN_COUNT:
+                            self.grid[row][column + i] = 0
+                        if row < ROW_COUNT and column < COLUMN_COUNT:
+                            self.grid[row][column - i] = 0
+            elif(self.direction == Direction.DOWN):
+                if self.grid[row][column] == 0:
+                    for i in range(self.length_of_ship):
+                        if row < ROW_COUNT and column < COLUMN_COUNT:
+                            self.grid[row - i][column] = 1
+                else:
+                    for i in range(self.length_of_ship):
+                        if row < ROW_COUNT and column < COLUMN_COUNT:
+                            self.grid[row + i][column] = 0
+                        if row < ROW_COUNT and column < COLUMN_COUNT:
+                            self.grid[row - i][column] = 0
         self.recreate_grid()
 
     def on_key_press(self, key, modifiers):
         """Called whenever a key is pressed. """
         if key == arcade.key.ENTER:
-            Board.place_ships(Board, LENGTH_OF_SHIP, (row, column), Direction.RIGHT)
-            print(f"hello")
+            print(self.row, self.column)
+            self.board.place_ships(self.length_of_ship, (self.row, self.column), self.direction)
+            if self.length_of_ship > 0:
+                self.length_of_ship = self.length_of_ship - 1
+                print(self.board.get_board_view()[1])
+        if key == arcade.key.SPACE:
+            print(f"space")
+            if(self.direction == Direction.RIGHT):
+                self.direction = Direction.DOWN
+                print(self.direction)
+            elif(self.direction == Direction.DOWN):
+                self.direction = Direction.RIGHT
+                print(self.direction)
+
+
 
 def main():
     MyGame(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
     arcade.run()
-
 
 if __name__ == "__main__":
     main()
