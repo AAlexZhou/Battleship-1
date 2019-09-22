@@ -1,4 +1,3 @@
-
 """""
 Need a player passed to me with number of player
 """""
@@ -43,6 +42,7 @@ class MyGame(arcade.Window):
 
         self.shape_list = None
         self.length_of_ship = 5
+        self.selected = False
         self.row = 0
         self.column = 0
         self.direction = Direction.RIGHT
@@ -87,8 +87,8 @@ class MyGame(arcade.Window):
         numbers = ["1", "2", "3", "4", "5", "6", "7", "8"]
         numbers.reverse()
         for i in range(8):
-                        arcade.draw_text(letters[i], (i * WIDTH) + 70, SCREEN_WIDTH - 20, arcade.color.WHITE)
-                        arcade.draw_text(numbers[i], OFFSET_AXIS_LABEL / 2, (i * HEIGHT) + 70, arcade.color.WHITE)
+            arcade.draw_text(letters[i], (i * WIDTH) + 70, SCREEN_WIDTH - 20, arcade.color.WHITE)
+            arcade.draw_text(numbers[i], OFFSET_AXIS_LABEL / 2, (i * HEIGHT) + 70, arcade.color.WHITE)
 
         self.shape_list.draw()
 
@@ -112,48 +112,79 @@ class MyGame(arcade.Window):
 
             i = 0
             # Flip the location between 1 and 0.
-            if(self.direction == Direction.RIGHT):
-                if self.grid[row][column] == 0:
+            if self.direction == Direction.RIGHT:
+                if self.grid[row][column] == 0 and not self.selected:
                     for i in range(self.length_of_ship):
-                        if row < ROW_COUNT and column < COLUMN_COUNT:
+                        if row < ROW_COUNT and column < COLUMN_COUNT and (column + self.length_of_ship - 1) < COLUMN_COUNT:
                             self.grid[row][column + i] = 1
-                else:
+                            self.selected = True
+                        else:
+                            print(f"invalid placement")
+                            self.selected = False
+                            break
+                elif self.grid[row][column] == 1 and self.selected:
                     for i in range(self.length_of_ship):
-                        if row < ROW_COUNT and column < COLUMN_COUNT:
+                        if row < ROW_COUNT and column < COLUMN_COUNT and (column + self.length_of_ship - 1) < COLUMN_COUNT:
                             self.grid[row][column + i] = 0
-                        if row < ROW_COUNT and column < COLUMN_COUNT:
-                            self.grid[row][column - i] = 0
-            elif(self.direction == Direction.DOWN):
-                if self.grid[row][column] == 0:
+                            self.selected = False
+                        else:
+                            print(f"offscreen redo")
+                            self.selected = False
+                            break
+                elif self.grid[row][column] == 0 and self.selected:
+                    print(f"ship already selected")
+                elif self.grid[row][column] == 1 and not self.selected:
+                    print(f"there is already a ship in this space")
+
+            elif self.direction == Direction.DOWN:
+                if self.grid[row][column] == 0 and not self.selected:
                     for i in range(self.length_of_ship):
-                        if row < ROW_COUNT and column < COLUMN_COUNT:
+                        if row < ROW_COUNT and column < COLUMN_COUNT and (row - self.length_of_ship + 1) > -1:
                             self.grid[row - i][column] = 1
-                else:
+                            self.selected = True
+                        else:
+                            print(f"invalid placement")
+                            self.selected = False
+                            break
+                elif self.grid[row][column] == 1 and self.selected:
                     for i in range(self.length_of_ship):
-                        if row < ROW_COUNT and column < COLUMN_COUNT:
-                            self.grid[row + i][column] = 0
-                        if row < ROW_COUNT and column < COLUMN_COUNT:
+                        if row < ROW_COUNT and column < COLUMN_COUNT and (row - self.length_of_ship + 1) > -1:
                             self.grid[row - i][column] = 0
+                            self.selected = False
+                        else:
+                            print(f"invalid placement")
+                            self.selected = False
+                            break
+                elif self.grid[row][column] == 0 and self.selected:
+                    print(f"ship already selected")
+                elif self.grid[row][column] == 1 and not self.selected:
+                    print(f"there is already a ship in this space")
+
         self.recreate_grid()
 
     def on_key_press(self, key, modifiers):
         """Called whenever a key is pressed. """
         if key == arcade.key.ENTER:
-            print(self.row, self.column)
-            self.board.place_ships(self.length_of_ship, (self.row, self.column), self.direction)
-            if self.length_of_ship > 0:
-                self.length_of_ship = self.length_of_ship - 1
-                print(self.board.get_board_view()[1])
-        if key == arcade.key.SPACE:
+            if self.selected:
+                self.selected = False
+                print(self.row, self.column)
+                self.board.place_ships(self.length_of_ship, (self.row, self.column), self.direction)
+                if self.length_of_ship > 0:
+                    self.length_of_ship = self.length_of_ship - 1
+                    print(self.board.get_board_view()[1])
+
+            else:
+                print(f"please place ship")
+        if key == arcade.key.SPACE and not self.selected:
             print(f"space")
-            if(self.direction == Direction.RIGHT):
+            if self.direction == Direction.RIGHT:
                 self.direction = Direction.DOWN
                 print(self.direction)
-            elif(self.direction == Direction.DOWN):
+            elif self.direction == Direction.DOWN:
                 self.direction = Direction.RIGHT
                 print(self.direction)
-
-
+        elif key == arcade.key.SPACE and self.selected:
+            print(f"cannot change direction while ship is selected")
 
 def main():
     MyGame(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)

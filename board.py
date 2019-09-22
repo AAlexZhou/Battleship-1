@@ -29,7 +29,7 @@ class Board:
         """
         self.hits = [[CellStatus.EMPTY] * 8 for _ in range(0, 8)]
         self.ships = []
-        self._place_ships()
+        #self.place_ships()
 
     def place_ships(self, length, origin, direction):
         """
