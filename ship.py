@@ -44,14 +44,10 @@ class Ship:
         self.list=[self.origin]
 
         for i in range(1, self.size):
-            if(self.direction == self.direction.LEFT):
-                self.list.append((self.origin[0], self.origin[1]-i))
-            elif(self.direction ==self.direction.RIGHT):
+            if(self.direction ==self.direction.RIGHT):
                 self.list.append((self.origin[0], self.origin[1]+i))
-            elif(self.direction ==self.direction.UP):
-                self.list.append((self.origin[0]-i, self.origin[1]))
             elif(self.direction ==self.direction.DOWN):
-                self.list.append((self.origin[0]+i, self.origin[1]))
+                self.list.append((self.origin[0]-i, self.origin[1]))
         
 
         return self.list

@@ -171,6 +171,8 @@ class MyGame(arcade.Window):
                 self.board.place_ships(self.length_of_ship, (self.row, self.column), self.direction)
                 if self.length_of_ship > 0:
                     self.length_of_ship = self.length_of_ship - 1
+                    self.row = 0
+                    self.column = 0
                     print(self.board.get_board_view()[1])
 
             else:
