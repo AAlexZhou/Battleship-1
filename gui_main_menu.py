@@ -13,10 +13,12 @@ from gui_number_ships import NumberShips
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 800
 
+
 class MainMenu(arcade.View):
     '''
     Manages View for Main Menu Screen. Either quits the program or hands control off to NumberShips.
     '''
+
     def __init__(self):
         '''
         Constructs a MainMenu Object
@@ -25,8 +27,10 @@ class MainMenu(arcade.View):
         '''
         super().__init__()
         self.button_list = []
-        play_button = TextButton(SCREEN_WIDTH/2, SCREEN_HEIGHT/3, self.play_game, "Start")
-        quit_button = TextButton(SCREEN_WIDTH/2, (SCREEN_HEIGHT/3) - 55, self.quit_game, "Quit")
+        play_button = TextButton(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 3 + 30, self.play_game, "Start")
+        ai_button = TextButton(SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 3 - 30), self.ai_mode, "Play With AI")
+        quit_button = TextButton(SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 3) - 90, self.quit_game, "Quit")
+        self.button_list.append(ai_button)
         self.button_list.append(play_button)
         self.button_list.append(quit_button)
 
@@ -45,7 +49,7 @@ class MainMenu(arcade.View):
         :post: The text and buttons are now on the screen
         '''
         arcade.start_render()
-        arcade.draw_text("Welcome to KRAAG Battleship!", SCREEN_WIDTH/2, SCREEN_HEIGHT/2,
+        arcade.draw_text("Welcome to KRAAG Battleship!", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2,
                          arcade.color.BLACK, font_size=50, anchor_x="center")
         for element in self.button_list:
             element.draw()
@@ -91,4 +95,11 @@ class MainMenu(arcade.View):
         :post: The window closes and the program ends
         """
         arcade.close_window()
-        sys.exit() #forcibly exits the python program so no futher windows open
+        sys.exit()  # forcibly exits the python program so no futher windows open
+
+    def ai_mode(self):
+        # AI mode
+        # return: none
+        # post: The game state advances to selecting how many ships the users want by changing the view to NumberShips
+        ship_num_view = NumberShips()
+        self.window.show_view(ship_num_view)

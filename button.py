@@ -169,7 +169,7 @@ class TextButton(Button):
 
         :pre: A window or view exists for the button to be created on
         """
-        super().__init__(center_x, center_y, 65, 40, text, 18, "Arial")
+        super().__init__(center_x, center_y, 120, 45, text, 17, "Arial")
         self.action_function = action_function
 
     def on_release(self):
