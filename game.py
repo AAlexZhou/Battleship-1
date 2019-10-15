@@ -9,9 +9,11 @@ import arcade
 from board_window import BoardWindow
 from popup_modal import PopupModal
 from player import Player
+from board_window_easy import AI_window
 
 WINDOW_HEIGHT = 715
 WINDOW_WIDTH = 715
+
 
 class Game:
     """
@@ -77,14 +79,15 @@ class Game:
         arcade.schedule(sys.exit, 5)
 
     def on_turn_end(self):
-        '''
+        """
         Handles switching player states at the end of a turn
 
         :return: None
         :post: Switches current player and toggles self.turn_over
-        '''
+        """
         if self.current_player == self.player1:
             self.current_player = self.player2
+
         else:
             self.current_player = self.player1
 
@@ -108,7 +111,6 @@ class Game:
                 self.own_board.show_view(self.player2_own_board)
                 self.other_board.show_view(self.player2_other_board)
             self.turn_over = False
-        elif (self.player1.has_lost() or self.player2.has_lost())and not self.is_game_over:
-            self.is_game_over= True
+        elif (self.player1.has_lost() or self.player2.has_lost()) and not self.is_game_over:
+            self.is_game_over = True
             self.end_game()
-            

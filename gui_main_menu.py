@@ -9,14 +9,18 @@ from button import check_mouse_press_for_buttons
 from button import check_mouse_release_for_buttons
 import sys
 from gui_number_ships import NumberShips
+from gui_number_ships_mid import NumberShips_mid
+from gui_number_ships_a import aNumberShips
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 800
+
 
 class MainMenu(arcade.View):
     '''
     Manages View for Main Menu Screen. Either quits the program or hands control off to NumberShips.
     '''
+
     def __init__(self):
         '''
         Constructs a MainMenu Object
@@ -25,9 +29,15 @@ class MainMenu(arcade.View):
         '''
         super().__init__()
         self.button_list = []
-        play_button = TextButton(SCREEN_WIDTH/2, SCREEN_HEIGHT/3, self.play_game, "Start")
-        quit_button = TextButton(SCREEN_WIDTH/2, (SCREEN_HEIGHT/3) - 55, self.quit_game, "Quit")
+        play_button = TextButton(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 3 + 100, self.play_game, "Start")
+        easy_button = TextButton(SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 3 + 50), self.easy_mode, "Easy AI Mode")
+        mid_button = TextButton(SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 3 ), self.mid_mode, " Medium AI Mode")
+        hard_button = TextButton(SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 3 - 50), self.hard_mode, "Hard AI Mode")
+        quit_button = TextButton(SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 3) - 100, self.quit_game, "Quit")
         self.button_list.append(play_button)
+        self.button_list.append(easy_button)
+        self.button_list.append(mid_button)
+        self.button_list.append(hard_button)
         self.button_list.append(quit_button)
 
     def on_show(self):
@@ -45,7 +55,7 @@ class MainMenu(arcade.View):
         :post: The text and buttons are now on the screen
         '''
         arcade.start_render()
-        arcade.draw_text("Welcome to KRAAG Battleship!", SCREEN_WIDTH/2, SCREEN_HEIGHT/2,
+        arcade.draw_text("Welcome to KRAAG Battleship!", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2,
                          arcade.color.BLACK, font_size=50, anchor_x="center")
         for element in self.button_list:
             element.draw()
@@ -79,7 +89,7 @@ class MainMenu(arcade.View):
 
         :post: The game state advances to selecting how many ships the users want by changing the view to NumberShips
         """
-        ship_num_view = NumberShips()
+        ship_num_view = aNumberShips()
         self.window.show_view(ship_num_view)
 
     @staticmethod
@@ -91,4 +101,25 @@ class MainMenu(arcade.View):
         :post: The window closes and the program ends
         """
         arcade.close_window()
-        sys.exit() #forcibly exits the python program so no futher windows open
+        sys.exit()  # forcibly exits the python program so no futher windows open
+
+    def easy_mode(self):
+        # AI mode
+        # return: none
+        # post: The game state advances to selecting how many ships the users want by changing the view to NumberShips
+        ship_num_view = NumberShips()
+        self.window.show_view(ship_num_view)
+
+    def mid_mode(self):
+        # AI mode
+        # return: none
+        # post: The game state advances to selecting how many ships the users want by changing the view to NumberShips
+        ship_num_view = NumberShips_mid()
+        self.window.show_view(ship_num_view)
+
+    def hard_mode(self):
+        # AI mode
+        # return: none
+        # post: The game state advances to selecting how many ships the users want by changing the view to NumberShips
+        ship_num_view = NumberShips()
+        self.window.show_view(ship_num_view)

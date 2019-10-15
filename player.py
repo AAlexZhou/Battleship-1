@@ -3,8 +3,9 @@ Player module containing the Player class. Manages if the player has lost or not
 """
 from board import Board
 
+
 class Player():
-    #Player contructor called from game class
+    # Player contructor called from game class
     def __init__(self, num_of_ships):
         """
         Constructs a player object
@@ -18,7 +19,7 @@ class Player():
         self.total_ship_blocks = ((num_of_ships) * (num_of_ships + 1)) / 2
         self.board = Board()
 
-    #used by game class to determine if player has lost
+    # used by game class to determine if player has lost
     def has_lost(self):
         """
         Lets game know when player has lost
@@ -33,7 +34,7 @@ class Player():
         else:
             return False
 
-    #calls board class to determine if ship is hit and returns information to game
+    # calls board class to determine if ship is hit and returns information to game
     def be_attacked(self, x_pos: int, y_pos: int) -> bool:
         """
         Decrements amount of ship blocks available when player is attacked
@@ -52,7 +53,7 @@ class Player():
             print("Miss... Next player please")
             return False
 
-    #calculates number of total ship blocks from number of ships choosen from user
+    # calculates number of total ship blocks from number of ships choosen from user
     def get_ship_blocks(self, num_of_ships):
         """
         Calculates amount of ship blocks available to player
@@ -62,6 +63,6 @@ class Player():
         :post: Returns how many unhit ship cells the player has
         """
         sum = 0
-        for i in range(1, num_of_ships+1):
-            sum+=i
+        for i in range(1, num_of_ships + 1):
+            sum += i
         return sum

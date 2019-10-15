@@ -1,12 +1,12 @@
-'''
+"""
 Handles Selection of Ships
-'''
+"""
 import arcade
 import player
 from button import TextButton
 from button import check_mouse_press_for_buttons
 from button import check_mouse_release_for_buttons
-from gui_shiplocations import ShipPlacementView
+from gui_shiplocations_mid import ShipPlacementView_mid
 
 # Set how many rows and columns we will have
 ROW_COUNT = 8
@@ -25,14 +25,15 @@ OFFSET_AXIS_LABEL = 30
 OFFSET_BUTTON = 100
 
 # Do the math to figure out our screen dimensions
-SCREEN_WIDTH = (WIDTH + MARGIN) * COLUMN_COUNT + MARGIN + OFFSET_AXIS_LABEL #1315
-SCREEN_HEIGHT = (HEIGHT + MARGIN) * ROW_COUNT + MARGIN + OFFSET_AXIS_LABEL + OFFSET_BUTTON #1415
+SCREEN_WIDTH = (WIDTH + MARGIN) * COLUMN_COUNT + MARGIN + OFFSET_AXIS_LABEL  # 1315
+SCREEN_HEIGHT = (HEIGHT + MARGIN) * ROW_COUNT + MARGIN + OFFSET_AXIS_LABEL + OFFSET_BUTTON  # 1415
 
 
-class NumberShips(arcade.View):
+class NumberShips_mid(arcade.View):
     '''
     Handles selection for number of ships and passes control off the ShipPlacementView class
     '''
+
     def __init__(self):
         """
         Constructs a new MainMenuGUI object and sets the background color of the window.
@@ -67,7 +68,7 @@ class NumberShips(arcade.View):
         :post: The text and buttons are now on the screen
         '''
         arcade.start_render()
-        arcade.draw_text("How many Ships do you want?", SCREEN_WIDTH/1.80, SCREEN_HEIGHT/2,
+        arcade.draw_text("How many Ships do you want?", SCREEN_WIDTH / 1.80, SCREEN_HEIGHT / 2,
                          arcade.color.BLACK, font_size=45, anchor_x="center")
         for element in self.button_list:
             element.draw()
@@ -102,7 +103,7 @@ class NumberShips(arcade.View):
         num_of_ships = 1
         player1 = player.Player(num_of_ships)
         player2 = player.Player(num_of_ships)
-        place_ships_view = ShipPlacementView(player1)
+        place_ships_view = ShipPlacementView_mid(player1)
         self.window.show_view(place_ships_view)
 
     def number_2(self):
@@ -115,7 +116,7 @@ class NumberShips(arcade.View):
         num_of_ships = 2
         player1 = player.Player(num_of_ships)
         player2 = player.Player(num_of_ships)
-        place_ships_view = ShipPlacementView(player1)
+        place_ships_view = ShipPlacementView_mid(player1)
         self.window.show_view(place_ships_view)
 
     def number_3(self):
@@ -128,7 +129,7 @@ class NumberShips(arcade.View):
         num_of_ships = 3
         player1 = player.Player(num_of_ships)
         player2 = player.Player(num_of_ships)
-        place_ships_view = ShipPlacementView(player1)
+        place_ships_view = ShipPlacementView_mid(player1)
         self.window.show_view(place_ships_view)
 
     def number_4(self):
@@ -141,7 +142,7 @@ class NumberShips(arcade.View):
         num_of_ships = 4
         player1 = player.Player(num_of_ships)
         player2 = player.Player(num_of_ships)
-        place_ships_view = ShipPlacementView(player1)
+        place_ships_view = ShipPlacementView_mid(player1)
         self.window.show_view(place_ships_view)
 
     def number_5(self):
@@ -154,5 +155,5 @@ class NumberShips(arcade.View):
         num_of_ships = 5
         player1 = player.Player(num_of_ships)
         player2 = player.Player(num_of_ships)
-        place_ships_view = ShipPlacementView(player1)
+        place_ships_view = ShipPlacementView_mid(player1)
         self.window.show_view(place_ships_view)

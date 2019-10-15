@@ -4,16 +4,18 @@ Simple PopupModal to display user messages
 
 import arcade
 
+
 class PopupModal(arcade.Window):
     '''
     PopupModal is a simple window to display messages to the user
     '''
+
     def __init__(self, text):
         '''
         Constructs and displays PopupModal
         :params: text(str): Text to display to user
         '''
-        
+
         super().__init__(400, 200, "")
         self.text = text
 

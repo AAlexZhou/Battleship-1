@@ -7,7 +7,7 @@ from functools import reduce
 import arcade
 from board import CellStatus
 from player import Player
-
+import random
 
 # This sets the WIDTH and HEIGHT of each grid location
 CELL_WIDTH = 80
@@ -18,13 +18,14 @@ MARGIN = 5
 
 OFFSET = 30
 
+
 class BoardWindow(arcade.View):
-    '''
+    """
     View for the main game phase (displaying boards and shooting shots)
-    '''
+    """
 
     def __init__(self, width: int, height: int, title: str, player: Player, on_end, is_own_board: bool):
-        '''
+        """
         Initialize Board Window
 
         :param: width (int): Width of window
@@ -35,7 +36,7 @@ class BoardWindow(arcade.View):
         :param: is_own_board (Bool): Is this board owned by the player it refers to
         :return: None
         :pre: Player has been initalized with ships already placed
-        '''
+        """
 
         super().__init__()
         self.shape_list = None
@@ -49,12 +50,12 @@ class BoardWindow(arcade.View):
         self.recreate_grid()
 
     def recreate_grid(self):
-        '''
+        """
         Rebuild grid based on updated player data
 
         :returns: None
         :post: self.shape_list is updated to reflect the changing player board underneath
-        '''
+        """
 
         self.shape_list = arcade.ShapeElementList()
         grid = self.player.board.get_board_view()[0]
@@ -92,7 +93,6 @@ class BoardWindow(arcade.View):
                         x = (MARGIN + CELL_WIDTH) * column + MARGIN + CELL_WIDTH // 2
                         y = (MARGIN + CELL_HEIGHT) * row + MARGIN + CELL_HEIGHT // 2
                         arcade.draw_text("X", x + (OFFSET / 2), y - (OFFSET / 2), arcade.color.BLACK, 32)
-
 
     def on_mouse_press(self, x, y, _, __):
         """
