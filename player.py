@@ -66,3 +66,18 @@ class Player():
         for i in range(1, num_of_ships + 1):
             sum += i
         return sum
+
+    def be_search(self, x_pos: int, y_pos: int) -> bool:
+        """
+        Decrements amount of ship blocks available when player is attacked
+        :param: x_pos (int): the x position of the mouse click
+        :param: y_pos (int): the y position of the mouse click
+        :return: bool - true if hit, false if not
+
+        :post: Game now knows whether or not the player has been attacked
+        """
+
+        if self.board.search(x_pos, y_pos) == True:
+            return True
+        else:
+            return False

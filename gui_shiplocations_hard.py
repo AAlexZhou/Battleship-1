@@ -8,7 +8,7 @@ from game import Game
 from board import Board
 from ship import Ship, Direction
 from player import Player
-from aigame import aiGame
+from aigame_hard import aiGame_hard
 import random
 
 # Set how many rows and columns we will have
@@ -29,7 +29,7 @@ SCREEN_HEIGHT = (HEIGHT + MARGIN) * ROW_COUNT + MARGIN + OFFSET_AXIS_LABEL + OFF
 SCREEN_TITLE = "Ship Placement"
 
 
-class ShipPlacementView(arcade.View):
+class ShipPlacementView_hard(arcade.View):
     """
     View for placing ships on a board
     """
@@ -292,7 +292,7 @@ class DummyView(arcade.View):
             arcade.get_window().set_visible(False)
             player1 = DummyView.players[0]
             player2 = DummyView.players[1]
-            GAME = aiGame(player1, player2)
+            GAME = aiGame_hard(player1, player2)
             arcade.set_window(GAME.player1_other_board)
             arcade.schedule(GAME.run, 0.25)
             DummyView.has_ran = True

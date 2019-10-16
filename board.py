@@ -88,3 +88,15 @@ class Board:
 
         return (self.hits, [ship.get_cells() for ship in self.ships])
 
+    def search(self, x_pos: int, y_pos: int) -> bool:
+        """
+        Handles when the current board is attacked by another player
+
+        :param: x_pos (int): x position of where the shot is fired (0 indexed)
+        :param: y_pos (int): y position of where the shot is fired (0 indexed)
+        :return: returns whether the shot hit a ship or not
+        """
+        for ship in self.ships:
+            if (x_pos, y_pos) in ship.get_cells():
+                return True
+        return False

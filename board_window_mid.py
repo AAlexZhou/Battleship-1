@@ -38,7 +38,6 @@ class BoardWindow(arcade.View):
         '''
 
         super().__init__()
-        self.x = False
         self.shape_list = None
         self.player = player
         self.on_end = on_end
@@ -120,7 +119,6 @@ class BoardWindow(arcade.View):
                 arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
             self.recreate_grid()
             self.on_end()
-            self.x = True
 
 
 class AI_window(arcade.View):
@@ -149,7 +147,6 @@ class AI_window(arcade.View):
         self.width = width
         self.height = height
         self.on_end = on_end
-
         arcade.set_background_color(arcade.color.BLACK)
         self.press()
 
@@ -169,6 +166,7 @@ class AI_window(arcade.View):
                     color = arcade.color.WHITE
                 elif grid[row][column] == CellStatus.MISS:
                     color = arcade.color.GRAY
+
                 elif grid[row][column] == CellStatus.HIT:
                     color = arcade.color.RED
                 x = (MARGIN + CELL_WIDTH) * column + MARGIN + CELL_WIDTH // 2
@@ -209,12 +207,33 @@ class AI_window(arcade.View):
         :post: Could end turn if the press was valid
         """
 
-        if not self.is_own_board:
-            return
-
         # Change the x/y screen coordinates to grid coordinates
-        row = random.randint(1, 8)
-        column = random.randint(1, 8)
+        grid = self.player.board.get_board_view()[0]
+        row = random.randint(0, 7)
+        column = random.randint(0, 7)
+        for i in range(8):
+            for j in range(8):
+                if grid[i][j] == CellStatus.HIT:
+                    if grid[i-1][j] == CellStatus.EMPTY and i != 0:
+                        row = i - 1
+                        column = j
+                        break
+                    elif grid[i][j+1] == CellStatus.EMPTY and j != 7:
+                        row = i
+                        column = j + 1
+                        break
+                    elif grid[i+1][j] == CellStatus.EMPTY:
+                        row = i + 1
+                        column = j
+                        break
+                    elif grid[i][j-1] == CellStatus.EMPTY and j != 0:
+                        row = i
+                        column = j - 1
+                        break
+            else:
+                continue
+            break
+
         print(f"Grid coordinates: ({row}, {column})")
 
         if row < 8 and column < 8 and row >= 0 and column >= 0:

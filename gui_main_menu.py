@@ -11,6 +11,7 @@ import sys
 from gui_number_ships import NumberShips
 from gui_number_ships_mid import NumberShips_mid
 from gui_number_ships_a import aNumberShips
+from gui_number_ships_hard import NumberShips_hard
 
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 800
@@ -121,5 +122,5 @@ class MainMenu(arcade.View):
         # AI mode
         # return: none
         # post: The game state advances to selecting how many ships the users want by changing the view to NumberShips
-        ship_num_view = NumberShips()
+        ship_num_view = NumberShips_hard()
         self.window.show_view(ship_num_view)

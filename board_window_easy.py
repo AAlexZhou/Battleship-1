@@ -208,8 +208,8 @@ class AI_window(arcade.View):
         """
 
         # Change the x/y screen coordinates to grid coordinates
-        row = random.randint(1, 8)
-        column = random.randint(1, 8)
+        row = random.randint(0, 7)
+        column = random.randint(0, 7)
         print(f"Grid coordinates: ({row}, {column})")
 
         if row < 8 and column < 8 and row >= 0 and column >= 0:

@@ -40,7 +40,6 @@ class ShipPlacementView_mid(arcade.View):
         :param: width(int) - width of window
         :param: height(int) - height of window
         :param: title (string) - title of window
-
         :pre: The NumberShips class has been run and the users selected how many ships they want to play with
         """
         super().__init__()
@@ -74,7 +73,6 @@ class ShipPlacementView_mid(arcade.View):
     def recreate_grid(self):
         """
         Redraws grid after event.
-
         :post: The grid has now update after an event
         """
         self.shape_list = arcade.ShapeElementList()
@@ -97,7 +95,6 @@ class ShipPlacementView_mid(arcade.View):
     def on_draw(self):
         """
         Initial screen view.
-
         :post: The grid and text are now on the screen
         """
         arcade.start_render()
@@ -128,7 +125,6 @@ class ShipPlacementView_mid(arcade.View):
         :param: y (int) - y location of mouse press
         :param: button (button) - button of mouse press
         :param: modifiers - life cycle method
-
         :post: Checks to see if a grid cell was pressed and places a ship accordingly
         """
         # Change the x/y screen coordinates to grid coordinates
@@ -209,7 +205,6 @@ class ShipPlacementView_mid(arcade.View):
         Called whenever a key is pressed.
         :param: key (key) - key pressed
         :param: modifiers - life cycle method
-
         :post: The ship's location is now locked on the board or the ships orientation is changed
         """
         # sets the location of first ship in board class when enter key is pressed and then remaining
@@ -258,7 +253,6 @@ class DummyView(arcade.View):
     def __init__(self):
         """
         Constructor - calls parent class and increments iterations
-
         :pre: The ShipPlacementView class has been run and the player has finished placing all their ships
         """
         super().__init__()
@@ -267,7 +261,6 @@ class DummyView(arcade.View):
     def on_show(self):
         """
         sets background color to black
-
         :post: The View has a background color
         """
         arcade.set_background_color(arcade.color.ORANGE_PEEL)
@@ -275,7 +268,6 @@ class DummyView(arcade.View):
     def on_draw(self):
         """
         draws text on new window
-
         :post: The text is now on the screen
         """
         arcade.start_render()
@@ -291,7 +283,6 @@ class DummyView(arcade.View):
         Called whenever mouse is pressed.
         :param: key (key) - key pressed
         :param: modifiers - life cycle method
-
         :post: Checks to see if the mouse was pressed and advances the game state if it was
         """
         player2 = Player(DummyView.players[0].num_of_ships)
@@ -315,7 +306,6 @@ class AI_place(arcade.View):
             :param: width(int) - width of window
             :param: height(int) - height of window
             :param: title (string) - title of window
-
             :pre: The NumberShips class has been run and the users selected how many ships they want to play with
             """
         super().__init__()
@@ -352,7 +342,6 @@ class AI_place(arcade.View):
     def recreate_grid(self):
         """
             Redraws grid after event.
-
             :post: The grid has now update after an event
             """
         self.shape_list = arcade.ShapeElementList()
@@ -375,7 +364,6 @@ class AI_place(arcade.View):
     def on_draw(self):
         """
             Initial screen view.
-
             :post: The grid and text are now on the screen
             """
         arcade.start_render()
@@ -406,7 +394,6 @@ class AI_place(arcade.View):
             :param: y (int) - y location of mouse press
             :param: button (button) - button of mouse press
             :param: modifiers - life cycle method
-
             :post: Checks to see if a grid cell was pressed and places a ship accordingly
             """
         # Change the x/y screen coordinates to grid coordinates
@@ -414,7 +401,7 @@ class AI_place(arcade.View):
         self.row = row
         column = random.randint(1, 8)
         self.column = column
-        print(f"Grid coordinates: ({row}, {column})")
+
         # Make sure initial mouse press is on grid
         if row < ROW_COUNT and column < COLUMN_COUNT:
             i = 0
@@ -438,12 +425,10 @@ class AI_place(arcade.View):
                 # self.length_of_ship - 1) < COLUMN_COUNT: self.grid[row][column + i] = 0 self.selected = False else:
                 # print(f"offscreen redo") self.selected = False break if grid cell selected is white and a ship
                 # location has already been selected then do not select another ship
-                elif self.grid[row][column] == 0 and self.selected:
-                    print(f"ship already selected")
+
                 # if grid cell selected is red and a ship location has not been selected then a
                 # ship already occupies that location and another grid cell must be selected
-                elif self.grid[row][column] == 1 and not self.selected:
-                    print(f"there is already a ship in this space")
+
             # allows selection of location of ship to be vertical
             elif self.direction == Direction.DOWN:
                 # if grid cell is white with no ship currently placed, change grid cells to selected based on
@@ -454,9 +439,8 @@ class AI_place(arcade.View):
                             self.grid[row - i][column] = 1
                             self.selected = True
                         else:
-                            print(f"invalid placement")
                             self.selected = False
-                            break
+
                 # if grid cell is red and ship is selected make current selection ship cells white again and
                 # changed selection back to not selection
                 elif self.grid[row][column] == 1 and self.selected:
@@ -465,17 +449,10 @@ class AI_place(arcade.View):
                             self.grid[row - i][column] = 0
                             self.selected = False
                         else:
-                            print(f"invalid placement")
                             self.selected = False
-                            break
                 # if grid cell selected is white and a ship location has already been selected
                 # then do not select another ship
-                elif self.grid[row][column] == 0 and self.selected:
-                    print(f"ship already selected")
-                # if grid cell selected is red and a ship location has not been selected then a
-                # ship already occupies that location and another grid cell must be selected
-                elif self.grid[row][column] == 1 and not self.selected:
-                    print(f"there is already a ship in this space")
+
         # redraw grid
 
     def next(self):
@@ -483,27 +460,21 @@ class AI_place(arcade.View):
              Called whenever a key is pressed.
              :param: key (key) - key pressed
              :param: modifiers - life cycle method
-
              :post: The ship's location is now locked on the board or the ships orientation is changed
              """
         # sets the location of first ship in board class when enter key is pressed and then remaining
         # ships as they are looped through
         if self.selected:
             self.selected = False
-            print(self.row, self.column)
+            #print(self.row, self.column)
             self.player.board.place_ships(self.length_of_ship, (self.row, self.column), self.direction)
             # loops through the remaining ships in decreasing length
             if self.length_of_ship > 0:
                 self.length_of_ship = self.length_of_ship - 1
                 self.row = 0
                 self.column = 0
-                print(self.player.board.get_board_view()[1])
 
-        else:
-            if self.length_of_ship == 0:
-                print(f"All ships placed")
-            else:
-                print(f"please place ship")
+
+
         # allows the orientation of the ship placement to change between horizontal and vertical
         # when space bar is pushed and a ship is not currently selected
-
