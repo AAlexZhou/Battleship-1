@@ -17,7 +17,7 @@ CELL_HEIGHT = 80
 # This sets the margin between each cell
 MARGIN = 5
 OFFSET = 30
-
+first = True
 
 class BoardWindow(arcade.View):
     '''
@@ -181,7 +181,7 @@ class AI_window(arcade.View):
         self.width = width
         self.height = height
         self.on_end = on_end
-
+        self.first = True
         arcade.set_background_color(arcade.color.BLACK)
         self.press()
 
@@ -243,18 +243,23 @@ class AI_window(arcade.View):
         """
 
         # Change the x/y screen coordinates to grid coordinates
-        row = random.randint(0, 7)
-        column = random.randint(0, 7)
-        grid = self.player.board.get_board_view()[0]
-        while grid[row][column] != CellStatus.EMPTY:
+        global first
+        if first == True:
+            first = False
+            self.recreate_grid()
+        else:
             row = random.randint(0, 7)
             column = random.randint(0, 7)
-        print(f"Grid coordinates: ({row}, {column})")
+            grid = self.player.board.get_board_view()[0]
+            while grid[row][column] != CellStatus.EMPTY:
+                row = random.randint(0, 7)
+                column = random.randint(0, 7)
+            print(f"Grid coordinates: ({row}, {column})")
 
-        if row < 8 and column < 8 and row >= 0 and column >= 0:
-            if self.player.be_attacked(row, column):
-                arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
+            if row < 8 and column < 8 and row >= 0 and column >= 0:
+                if self.player.be_attacked(row, column):
+                    arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
 
-            else:
-                arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
-            self.recreate_grid()
+                else:
+                    arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
+                self.recreate_grid()

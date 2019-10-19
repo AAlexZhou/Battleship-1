@@ -144,26 +144,15 @@ class aShipPlacementView(arcade.View):
                 if self.grid[row][column] == 0 and not self.selected:
                     for i in range(self.length_of_ship):
                         if row < ROW_COUNT and column < COLUMN_COUNT and (
-                                column + self.length_of_ship - 1) < COLUMN_COUNT:
+                                column + self.length_of_ship - 1) < COLUMN_COUNT and self.grid[row][column+i] != 1:
                             self.grid[row][column + i] = 1
                             self.selected = True
                         else:
                             print(f"invalid placement")
+                            self.grid[row][column] = 0
                             self.selected = False
                             break
-                # if grid cell is red and ship is selected make current selection ship cells white again and
-                # changed selection back to not selection
-                # elif self.grid[row][column] == 1 and self.selected:
-                #     for i in range(self.length_of_ship):
-                #         if row < ROW_COUNT and column < COLUMN_COUNT and (column + self.length_of_ship - 1) < COLUMN_COUNT:
-                #             self.grid[row][column + i] = 0
-                #             self.selected = False
-                #         else:
-                #             print(f"offscreen redo")
-                #             self.selected = False
-                #             break
-                # if grid cell selected is white and a ship location has already been selected
-                # then do not select another ship
+
                 elif self.grid[row][column] == 0 and self.selected:
                     print(f"ship already selected")
                 # if grid cell selected is red and a ship location has not been selected then a
@@ -176,11 +165,12 @@ class aShipPlacementView(arcade.View):
                 # ship length, origin, and direction and then change setting to ship is successfully selected
                 if self.grid[row][column] == 0 and not self.selected:
                     for i in range(self.length_of_ship):
-                        if row < ROW_COUNT and column < COLUMN_COUNT and (row - self.length_of_ship + 1) > -1:
+                        if row < ROW_COUNT and column < COLUMN_COUNT and (row - self.length_of_ship + 1) > -1 and self.grid[row-i][column] != 1:
                             self.grid[row - i][column] = 1
                             self.selected = True
                         else:
                             print(f"invalid placement")
+                            self.grid[row][column] = 0
                             self.selected = False
                             break
                 # if grid cell is red and ship is selected make current selection ship cells white again and

@@ -17,7 +17,7 @@ CELL_HEIGHT = 80
 # This sets the margin between each cell
 MARGIN = 5
 OFFSET = 30
-
+first= True
 
 class BoardWindow(arcade.View):
     '''
@@ -241,41 +241,46 @@ class AI_window(arcade.View):
         """
 
         # Change the x/y screen coordinates to grid coordinates
-        grid = self.player.board.get_board_view()[0]
-        row = random.randint(0, 7)
-        column = random.randint(0, 7)
-        while grid[row][column] != CellStatus.EMPTY:
+        global first
+        if first == True:
+            first = False
+            self.recreate_grid()
+        else:
+            grid = self.player.board.get_board_view()[0]
             row = random.randint(0, 7)
             column = random.randint(0, 7)
-        for i in range(0,7):
-            for j in range(0,7):
-                if grid[i][j] == CellStatus.HIT:
-                    if i != 0 and grid[i-1][j] == CellStatus.EMPTY:
-                        row = i - 1
-                        column = j
-                        break
-                    elif j != 7 and grid[i][j+1] == CellStatus.EMPT:
-                        row = i
-                        column = j + 1
-                        break
-                    elif i != 7 and grid[i+1][j] == CellStatus.EMPTY:
-                        row = i + 1
-                        column = j
-                        break
-                    elif j != 0 and grid[i][j-1] == CellStatus.EMPTY:
-                        row = i
-                        column = j - 1
-                        break
-            else:
-                continue
-            break
+            while grid[row][column] != CellStatus.EMPTY:
+                row = random.randint(0, 7)
+                column = random.randint(0, 7)
+            for i in range(0,7):
+                for j in range(0,7):
+                    if grid[i][j] == CellStatus.HIT:
+                        if i != 0 and grid[i-1][j] == CellStatus.EMPTY:
+                            row = i - 1
+                            column = j
+                            break
+                        elif j != 7 and grid[i][j+1] == CellStatus.EMPT:
+                            row = i
+                            column = j + 1
+                            break
+                        elif i != 7 and grid[i+1][j] == CellStatus.EMPTY:
+                            row = i + 1
+                            column = j
+                            break
+                        elif j != 0 and grid[i][j-1] == CellStatus.EMPTY:
+                            row = i
+                            column = j - 1
+                            break
+                else:
+                    continue
+                break
 
-        print(f"Grid coordinates: ({row}, {column})")
+            print(f"Grid coordinates: ({row}, {column})")
 
-        if row < 8 and column < 8 and row >= 0 and column >= 0:
-            if self.player.be_attacked(row, column):
-                arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
+            if row < 8 and column < 8 and row >= 0 and column >= 0:
+                if self.player.be_attacked(row, column):
+                    arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
 
-            else:
-                arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
-            self.recreate_grid()
+                else:
+                    arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
+                self.recreate_grid()
