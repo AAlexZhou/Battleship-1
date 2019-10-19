@@ -1,5 +1,5 @@
 """""
-Handles placing ships in its own View.
+Handles placing ships in its own view which is easy-level AI's.
 Heavily modified version of http://arcade.academy/examples/array_backed_grid_buffered.html#array-backed-grid-buffered
 """""
 

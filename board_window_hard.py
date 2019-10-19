@@ -1,6 +1,7 @@
 """
-Contains BoardWindow class and required additional Constants defining the cell sizes.
-Heavily modified version of http://arcade.academy/examples/array_backed_grid_buffered.html#array-backed-grid-buffered
+Contains BoardWindow class and AI_Window class.
+For hard-level AI, this mode knows where all your ships are and lands a hit on your ship
+every turn so basically it's a cheater.
 """
 
 from functools import reduce

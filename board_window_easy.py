@@ -1,6 +1,6 @@
 """
-Contains BoardWindow class and required additional Constants defining the cell sizes.
-Heavily modified version of http://arcade.academy/examples/array_backed_grid_buffered.html#array-backed-grid-buffered
+Contains BoardWindow class and AI_Window class.
+For easy-level AI, it fires randomly on every turn.
 """
 
 from functools import reduce
@@ -210,7 +210,8 @@ class AI_window(arcade.View):
 
     def on_draw(self):
         """
-        Renders the class to the screen
+        Renders the AI class to the screen
+        :param: none
         """
 
         arcade.start_render()

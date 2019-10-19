@@ -1,5 +1,6 @@
 """
-Handles Selection of Ships
+Handles Selection of Ships for hard-level AI.
+AI would put the ships randomly on the board.
 """
 import arcade
 import player

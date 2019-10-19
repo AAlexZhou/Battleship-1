@@ -1,5 +1,5 @@
 # Battleship
-"The Goal Is Not To Cry"
+Classic Game of The Naval Combat !
 
 *Requires Python 3.7+*
 
@@ -12,13 +12,16 @@ $> pip install -r requirements.txt
 ## Usage
 To start the game run:
 ```
-$> python main.py
+$> python main.py (for Linux machine)
+$> pyhton.exe .\main.py (for Windows machine)
 ```
 
 ## Documentation
 To generate documentation run the following command. However, the most recent version should be in the `documentation` folder.
 ```
-$> pydoc -w ./ && mv *.html ./documentation
+$> pydoc -w ./ && mv *.html ./documentation  (for Linux machine)
+$> python -m pydoc -w .\ (for Windows machine)
+
 ```
 
 

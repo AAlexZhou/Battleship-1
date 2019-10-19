@@ -1,6 +1,7 @@
 """
-Contains BoardWindow class and required additional Constants defining the cell sizes.
-Heavily modified version of http://arcade.academy/examples/array_backed_grid_buffered.html#array-backed-grid-buffered
+Contains BoardWindow class and AI_Window class.
+For medium-level AI, It fires randomly until it hit a ship then fires
+in orthogonally adjacent spaces to find other hits until a ship is sunk
 """
 
 from functools import reduce
@@ -246,22 +247,22 @@ class AI_window(arcade.View):
         while grid[row][column] != CellStatus.EMPTY:
             row = random.randint(0, 7)
             column = random.randint(0, 7)
-        for i in range(8):
-            for j in range(8):
+        for i in range(0,7):
+            for j in range(0,7):
                 if grid[i][j] == CellStatus.HIT:
-                    if grid[i-1][j] == CellStatus.EMPTY and i != 0:
+                    if i != 0 and grid[i-1][j] == CellStatus.EMPTY:
                         row = i - 1
                         column = j
                         break
-                    elif grid[i][j+1] == CellStatus.EMPTY and j != 7:
+                    elif j != 7 and grid[i][j+1] == CellStatus.EMPT:
                         row = i
                         column = j + 1
                         break
-                    elif grid[i+1][j] == CellStatus.EMPTY and i != 7:
+                    elif i != 7 and grid[i+1][j] == CellStatus.EMPTY:
                         row = i + 1
                         column = j
                         break
-                    elif grid[i][j-1] == CellStatus.EMPTY and j != 0:
+                    elif j != 0 and grid[i][j-1] == CellStatus.EMPTY:
                         row = i
                         column = j - 1
                         break

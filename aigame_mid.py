@@ -1,7 +1,7 @@
 """
-Game module containing the Game class and
+AI Game module containing the Game class for AI and
 the SetUp class which gets the information needed for
-Game to initialize
+AI to initialize the mid-level game
 """
 
 import sys
@@ -19,11 +19,11 @@ WINDOW_WIDTH = 715
 class aiGame_mid:
     def __init__(self, player1: Player, player2: Player):
         """
-        Constructs a new Game object. creates and instance of the main menu window.
+        Constructs a new Game object. Creates an instance of the main menu window.
         :param: player1 (Player) - player 1 in the game
         :return: returns none.
 
-        :pre: Both Players have been initialized already with ships placed
+        :pre: Both Players (Player 2 is AI in this case) have been initialized already with ships placed
         """
 
         print("Making game")
