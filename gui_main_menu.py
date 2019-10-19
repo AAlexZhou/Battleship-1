@@ -32,7 +32,7 @@ class MainMenu(arcade.View):
         self.button_list = []
         play_button = TextButton(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 3 + 100, self.play_game, "Start")
         easy_button = TextButton(SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 3 + 50), self.easy_mode, "Easy AI Mode")
-        mid_button = TextButton(SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 3 ), self.mid_mode, " Medium AI Mode")
+        mid_button = TextButton(SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 3), self.mid_mode, " Medium AI Mode")
         hard_button = TextButton(SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 3 - 50), self.hard_mode, "Hard AI Mode")
         quit_button = TextButton(SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 3) - 100, self.quit_game, "Quit")
         self.button_list.append(play_button)

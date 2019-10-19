@@ -21,7 +21,7 @@ class Button:
                  face_color=arcade.color.LIGHT_GRAY,
                  highlight_color=arcade.color.WHITE,
                  shadow_color=arcade.color.GRAY,
-                 button_height=2):
+                 button_height=3):
         """
         Constructs a button with position, text, font size, color, button width and height
         :param: center_x (int) - center location of x coordinate
@@ -169,7 +169,7 @@ class TextButton(Button):
 
         :pre: A window or view exists for the button to be created on
         """
-        super().__init__(center_x, center_y, 155, 45, text, 17, "Arial")
+        super().__init__(center_x, center_y, 130, 45, text, 13, "Arial")
         self.action_function = action_function
 
     def on_release(self):

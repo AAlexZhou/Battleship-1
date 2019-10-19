@@ -18,6 +18,7 @@ class Player():
         self.lost = False
         self.total_ship_blocks = ((num_of_ships) * (num_of_ships + 1)) / 2
         self.board = Board()
+        self.x =0
 
     # used by game class to determine if player has lost
     def has_lost(self):
@@ -47,6 +48,7 @@ class Player():
         print(self.total_ship_blocks)
         if self.board.attacked(x_pos, y_pos) == True and self.total_ship_blocks > 0:
             self.total_ship_blocks -= 1
+            self.x += 1
             print("You have hit the other player's ship!")
             return True
         else:

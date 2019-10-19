@@ -92,6 +92,16 @@ class Game:
             self.current_player = self.player1
 
         arcade.pause(1.5)
+        y = self.player1.x
+        z = self.player2.x
+        print(f"                         ScoreBoard                                  ")
+        print(f"Player 1's Score: ")
+        print(z)
+        print(f"")
+        print(f"")
+        print(f"")
+        print(f"Player 2's Score: ")
+        print(y)
         self.turn_over = True
 
     def run(self, _):

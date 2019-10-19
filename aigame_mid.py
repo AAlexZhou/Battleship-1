@@ -10,7 +10,8 @@ from popup_modal import PopupModal
 from player import Player
 from board_window_mid import AI_window
 from board_window_mid import BoardWindow
-
+count = 0
+count2 = 0
 WINDOW_HEIGHT = 715
 WINDOW_WIDTH = 715
 
@@ -34,7 +35,6 @@ class aiGame_mid:
         self.is_game_over = False
         self.own_board = arcade.Window(715, 715, "Your Board")
         self.other_board = arcade.Window(715, 715, "Their Board")
-
         self.player1_own_board = AI_window(
             WINDOW_WIDTH, WINDOW_HEIGHT, "Your Board", self.player1, self.on_turn_end, True)
 
@@ -76,6 +76,16 @@ class aiGame_mid:
         """
         AI_window(WINDOW_WIDTH, WINDOW_HEIGHT, "Your Board", self.player1, self.on_turn_end, True)
         arcade.pause(1.5)
+        y = self.player1.x
+        z = self.player2.x
+        print(f"                         ScoreBoard                                  ")
+        print(f"Player 1's Score: ")
+        print(z)
+        print(f"")
+        print(f"")
+        print(f"")
+        print(f"AI's Score: ")
+        print(y)
         self.turn_over = True
 
     def run(self, _):

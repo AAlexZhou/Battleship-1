@@ -77,6 +77,16 @@ class aiGame:
         """
         AI_window(WINDOW_WIDTH, WINDOW_HEIGHT, "Your Board", self.player1, self.on_turn_end, True)
         arcade.pause(1.5)
+        y = self.player1.x
+        z = self.player2.x
+        print(f"                         ScoreBoard                                  ")
+        print(f"Player 1's Score: ")
+        print(z)
+        print(f"")
+        print(f"")
+        print(f"")
+        print(f"AI's Score: ")
+        print(y)
         self.turn_over = True
 
     def run(self, _):
