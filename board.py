@@ -60,23 +60,6 @@ class Board:
         self.hits[x_pos][y_pos] = CellStatus.MISS
         return False
 
-    def until_sunk(self, x_pos: int, y_pos: int) -> bool:
-        while(until_sunk == False):
-                if(self.hits[x_pos-1][y_pos]==CellStatus.HIT):
-                    return False
-                    until_sunk(self,x_pos-1,y_pos)
-                elif(self.hits[x_pos+1][y_pos]==CellStatus.HIT):
-                    return False
-                    until_sunk(self,x_pos+1,y_pos)
-                elif(self.hits[x_pos][y_pos-1]==CellStatus.HIT):
-                    return False
-                    until_sunk(self,x_pos,y_pos-1)
-                elif(self.hits[x_pos][y_pos+1]==CellStatus.HIT):
-                    return False
-                    until_sunk(self,x_pos,y_pos+1)
-                else:
-                    return True
-
 
     def get_board_view(self) -> (List[List[CellStatus]], List[List[Tuple[int, int]]]):
         """

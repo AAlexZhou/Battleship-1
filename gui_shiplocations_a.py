@@ -307,6 +307,8 @@ class DummyView(arcade.View):
         if (DummyView.iterations == 2):
             arcade.draw_text("Starting Game", 200, 450, arcade.color.WHITE, 54)
             arcade.draw_text("Click when Player 1 is ready to play", 180, 400, arcade.color.WHITE, 25)
+            arcade.draw_text("Hits: Pressing TAB during game can trigger special shots", 200, 350, arcade.color.WHITE,
+                             15)
         else:
             arcade.draw_text("Next Player TURN", 140, 450, arcade.color.WHITE, 54)
             arcade.draw_text("Click when next player is ready", 180, 400, arcade.color.WHITE, 25)

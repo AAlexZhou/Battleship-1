@@ -111,6 +111,7 @@ class BoardWindow(arcade.View):
         # Change the x/y screen coordinates to grid coordinates
         column = (x - OFFSET) // (CELL_WIDTH + MARGIN)
         row = (y) // (CELL_HEIGHT + MARGIN)
+        grid = self.player.board.get_board_view()[0]
 
         print(f"Click coordinates: ({x}, {y}). Grid coordinates: ({row}, {column})")
 
@@ -130,43 +131,43 @@ class BoardWindow(arcade.View):
                     arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
                 else:
                     arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
-                if row + 1 < 8 and column < 8 and row >= 0 and column >= 0:
+                if row + 1 < 8 and column < 8 and row >= 0 and column >= 0 and grid[row+1][column] == CellStatus.EMPTY:
                     if self.player.be_attacked(row + 1, column):
                         arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
                     else:
                         arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
-                if row < 8 and column + 1 < 8 and row >= 0 and column >= 0:
+                if row < 8 and column + 1 < 8 and row >= 0 and column >= 0 and grid[row][column+1] == CellStatus.EMPTY:
                     if self.player.be_attacked(row, column + 1):
                         arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
                     else:
                         arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
-                if row < 8 and column < 8 and row - 1 >= 0 and column >= 0:
+                if row < 8 and column < 8 and row - 1 >= 0 and column >= 0 and grid[row-1][column] == CellStatus.EMPTY:
                     if self.player.be_attacked(row - 1, column):
                         arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
                     else:
                         arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
-                if row < 8 and column < 8 and row >= 0 and column - 1 >= 0:
+                if row < 8 and column < 8 and row >= 0 and column - 1 >= 0 and grid[row][column - 1] == CellStatus.EMPTY:
                     if self.player.be_attacked(row, column - 1):
                         arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
                     else:
                         arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
                 # Four Head
-                if row + 1 < 8 and column + 1 < 8 and row >= 0 and column >= 0:
+                if row + 1 < 8 and column + 1 < 8 and row >= 0 and column >= 0 and grid[row+1][column+1] == CellStatus.EMPTY:
                     if self.player.be_attacked(row + 1, column + 1):
                         arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
                     else:
                         arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
-                if row < 8 and column + 1 < 8 and row - 1 >= 0 and column >= 0:
+                if row < 8 and column + 1 < 8 and row - 1 >= 0 and column >= 0 and grid[row-1][column+1] == CellStatus.EMPTY:
                     if self.player.be_attacked(row - 1, column + 1):
                         arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
                     else:
                         arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
-                if row + 1 < 8 and column < 8 and row >= 0 and column - 1 >= 0:
+                if row +1 < 8 and column < 8 and row >= 0 and column - 1 >= 0 and grid[row+1][column-1] == CellStatus.EMPTY:
                     if self.player.be_attacked(row + 1, column - 1):
                         arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
                     else:
                         arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
-                if row < 8 and column < 8 and row - 1 >= 0 and column - 1 >= 0:
+                if row < 8 and column < 8 and row - 1 >= 0 and column - 1 >= 0 and grid[row-1][column-1] == CellStatus.EMPTY:
                     if self.player.be_attacked(row - 1, column - 1):
                         arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
                     else:
