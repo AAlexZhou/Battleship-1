@@ -18,14 +18,16 @@ CELL_HEIGHT = 80
 MARGIN = 5
 OFFSET = 30
 first = True
+special = False
+
 
 class BoardWindow(arcade.View):
-    '''
+    """
     View for the main game phase (displaying boards and shooting shots)
-    '''
+    """
 
     def __init__(self, width: int, height: int, title: str, player: Player, on_end, is_own_board: bool):
-        '''
+        """
         Initialize Board Window
 
         :param: width (int): Width of window
@@ -36,7 +38,7 @@ class BoardWindow(arcade.View):
         :param: is_own_board (Bool): Is this board owned by the player it refers to
         :return: None
         :pre: Player has been initalized with ships already placed
-        '''
+        """
 
         super().__init__()
         self.shape_list = None
@@ -50,12 +52,12 @@ class BoardWindow(arcade.View):
         self.recreate_grid()
 
     def recreate_grid(self):
-        '''
+        """
         Rebuild grid based on updated player data
 
         :returns: None
         :post: self.shape_list is updated to reflect the changing player board underneath
-        '''
+        """
 
         self.shape_list = arcade.ShapeElementList()
         grid = self.player.board.get_board_view()[0]
@@ -104,6 +106,7 @@ class BoardWindow(arcade.View):
 
         :post: Could end turn if the press was valid
         """
+        global special
         if self.is_own_board:
             return
 
@@ -114,45 +117,69 @@ class BoardWindow(arcade.View):
         print(f"Click coordinates: ({x}, {y}). Grid coordinates: ({row}, {column})")
 
         if row < 8 and column < 8 and row >= 0 and column >= 0:
-            if self.player.be_attacked(row, column):
-                arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
-            else:
-                arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
-            self.recreate_grid()
-            self.on_end()
-    def on_key_press(self,key,modifiers):
+            # if TAB trigger special shots then it will fire special shots otherwise no
+            if special == False:
+                if self.player.be_attacked(row, column):
+                    arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
+                else:
+                    arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
+                self.recreate_grid()
+                self.on_end()
+            elif special == True:
+                # set special shots to normal
+                special = False
+                if self.player.be_attacked(row, column):
+                    arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
+                else:
+                    arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
+                if row + 1 < 8 and column < 8 and row >= 0 and column >= 0:
+                    if self.player.be_attacked(row + 1, column):
+                        arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
+                    else:
+                        arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
+                if row < 8 and column + 1 < 8 and row >= 0 and column >= 0:
+                    if self.player.be_attacked(row, column + 1):
+                        arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
+                    else:
+                        arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
+                if row < 8 and column < 8 and row - 1 >= 0 and column >= 0:
+                    if self.player.be_attacked(row - 1, column):
+                        arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
+                    else:
+                        arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
+                if row < 8 and column < 8 and row >= 0 and column - 1 >= 0:
+                    if self.player.be_attacked(row, column - 1):
+                        arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
+                    else:
+                        arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
+                # Four Head
+                if row + 1 < 8 and column + 1 < 8 and row >= 0 and column >= 0:
+                    if self.player.be_attacked(row + 1, column + 1):
+                        arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
+                    else:
+                        arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
+                if row < 8 and column + 1 < 8 and row - 1 >= 0 and column >= 0:
+                    if self.player.be_attacked(row - 1, column + 1):
+                        arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
+                    else:
+                        arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
+                if row < 8 and column + 1 < 8 and row - 1 >= 0 and column >= 0:
+                    if self.player.be_attacked(row - 1, column + 1):
+                        arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
+                    else:
+                        arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
+                if row < 8 and column < 8 and row - 1 >= 0 and column - 1 >= 0:
+                    if self.player.be_attacked(row - 1, column - 1):
+                        arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
+                    else:
+                        arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
+                self.recreate_grid()
+                self.on_end()
+
+    def on_key_press(self, key, modifiers):
+        global special
         if key == arcade.key.TAB:
-            self.press()
-            self.press()
-            self.on_end()
-
-    def press(self):
-        """
-        Handles user shooting at a grid cell including playing sounds
-
-        :param: x (int): x location of the click
-        :param: y (int): y location of the click
-        :returns: None
-
-        :post: Could end turn if the press was valid
-        """
-
-        # Change the x/y screen coordinates to grid coordinates
-        row = random.randint(0, 7)
-        column = random.randint(0, 7)
-        grid = self.player.board.get_board_view()[0]
-        while grid[row][column] != CellStatus.EMPTY:
-            row = random.randint(0, 7)
-            column = random.randint(0, 7)
-        print(f"Grid coordinates: ({row}, {column})")
-
-        if row < 8 and column < 8 and row >= 0 and column >= 0:
-            if self.player.be_attacked(row, column):
-                arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
-
-            else:
-                arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
-            self.recreate_grid()
+            special = True
 
 
 class AI_window(arcade.View):
@@ -164,14 +191,16 @@ class AI_window(arcade.View):
         """
         Initialize Board Window
 
+        :param: shape_list: the list of shape based on aracde build-in function
+        :param: first: the variable to the players who shot first
         :param: width (int): Width of window
         :param: height (int): Height of window
-        :param: title (str): Title for Window
         :param: player (Player): Player data this board shows
         :param: on_end (Function): Function to call when a turn ends
         :param: is_own_board (Bool): Is this board owned by the player it refers to
         :return: None
-        :pre: Player has been initalized with ships already placed
+        :pre: Player1 has been initalized with ships already placed as well as easy-level AI's
+        :post: easy-level AI's window initalized
         """
 
         super().__init__()
@@ -190,6 +219,7 @@ class AI_window(arcade.View):
         Rebuild grid based on updated player data
 
         :returns: None
+        :pre: shape_.list
         :post: self.shape_list is updated to reflect the changing player board underneath
         """
 
@@ -210,8 +240,9 @@ class AI_window(arcade.View):
 
     def on_draw(self):
         """
-        Renders the AI class to the screen
         :param: none
+        :pre: AI's board must be initalized already
+        :post: Renders the AI class to the screen
         """
 
         arcade.start_render()
@@ -237,6 +268,7 @@ class AI_window(arcade.View):
 
         :param: x (int): x location of the click
         :param: y (int): y location of the click
+        :param: player (Player): Player data this board shows
         :returns: None
 
         :post: Could end turn if the press was valid

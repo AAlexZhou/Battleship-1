@@ -20,9 +20,12 @@ class aiGame_hard:
         """
         Constructs a new Game object. Creates an instance of the main menu window.
         :param: player1 (Player) - player 1 in the game
+        :param: hard-level AI in the game
+
         :return: returns none.
 
         :pre: Both Players (Player 2 is AI in this case) have been initialized already with ships placed
+        :post: AI windows setup
         """
 
         print("Making game")
@@ -51,7 +54,8 @@ class aiGame_hard:
         Shows the endgame screen and announces the winner
         :return: returns none.
 
-        :post: Application exists
+        :pre: the function _init_ compiles successfully
+        :post: Application exists (either AI wins or player1 wins)
         """
 
         self.game_over = True
@@ -72,7 +76,9 @@ class aiGame_hard:
         Handles switching player states at the end of a turn
 
         :return: None
-        :post: Switches current player and toggles self.turn_over
+        :pre scoreboard function runs successfully
+        :post: Switches current player and toggles self.turn_over.
+               Also announce the score for player1 and AI on scoreboard.
         """
         AI_window(WINDOW_WIDTH, WINDOW_HEIGHT, "Your Board", self.player1, self.on_turn_end, True)
         arcade.pause(1.5)

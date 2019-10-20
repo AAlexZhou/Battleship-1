@@ -37,10 +37,11 @@ class NumberShips_hard(arcade.View):
 
     def __init__(self):
         """
-        Constructs a new MainMenuGUI object and sets the background color of the window.
+        :param: button
         :return: returns none.
 
-        :pre: The MainMenu class has been run and the user pressed the play_button
+        :pre: The MainMenu class has been run and the user pressed the play_button / hard-level AI __init__
+        :post: Constructs a new MainMenuGUI object and sets the background color of the window.
         """
         super().__init__()
         self.button_list = []
@@ -58,15 +59,16 @@ class NumberShips_hard(arcade.View):
 
     def on_show(self):
         '''
-        Ran when view is intially drawn to screen
+        :pre: none
         :post: The View has a background color
         '''
         arcade.set_background_color(arcade.color.AIR_FORCE_BLUE)
 
     def on_draw(self):
         '''
-        Ran when view is rendered
+        :pre: button class compiles successfully
         :post: The text and buttons are now on the screen
+        :return: none
         '''
         arcade.start_render()
         arcade.draw_text("How many Ships do you want?", SCREEN_WIDTH / 1.80, SCREEN_HEIGHT / 2,
@@ -90,6 +92,7 @@ class NumberShips_hard(arcade.View):
         :param: x (int): the x position of the mouse
         :param: y (int): the y position of the mouse
 
+        :pre: none
         :post: Checks to see if a button was release by doing check_mouse_release_for_buttons
         """
         check_mouse_release_for_buttons(x, y, self.button_list)
@@ -99,6 +102,7 @@ class NumberShips_hard(arcade.View):
         Advances the game state by setting the view to ShipPlacementView and creates two instances of Player with 1 ship
         :return: none
 
+        :pre: windwos must be setup
         :post: The game state advances by creating two instances of Player with the correct number of ships and by passing these players into an instance of ShipPlacementView
         """
         num_of_ships = 1
@@ -112,6 +116,7 @@ class NumberShips_hard(arcade.View):
         Advances the game state by setting the view to ShipPlacementView and creates two instances of Player with 2 ships
         :return: none
 
+        :pre: windwos must be setup
         :post: The game state advances by creating two instances of Player with the correct number of ships and by passing these players into an instance of ShipPlacementView
         """
         num_of_ships = 2
@@ -125,6 +130,7 @@ class NumberShips_hard(arcade.View):
         Advances the game state by setting the view to ShipPlacementView and creates two instances of Player with 3 ships
         :return: none
 
+        :pre: windwos must be setup
         :post: The game state advances by creating two instances of Player with the correct number of ships and by passing these players into an instance of ShipPlacementView
         """
         num_of_ships = 3
@@ -138,6 +144,7 @@ class NumberShips_hard(arcade.View):
         Advances the game state by setting the view to ShipPlacementView and creates two instances of Player with 4 ships
         :return: none
 
+        :pre: windwos must be setup
         :post: The game state advances by creating two instances of Player with the correct number of ships and by passing these players into an instance of ShipPlacementView
         """
         num_of_ships = 4
@@ -151,6 +158,7 @@ class NumberShips_hard(arcade.View):
         Advances the game state by setting the view to ShipPlacementView and creates two instances of Player with 5 ships
         :return: none
 
+        :pre: windwos must be setup
         :post: The game state advances by creating two instances of Player with the correct number of ships and by passing these players into an instance of ShipPlacementView
         """
         num_of_ships = 5

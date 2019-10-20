@@ -1,6 +1,7 @@
 """""
 Handles placing ships in its own view which is easy-level AI's.
 Heavily modified version of http://arcade.academy/examples/array_backed_grid_buffered.html#array-backed-grid-buffered
+Get the ships location for easy-level AI.
 """""
 
 import arcade
@@ -38,7 +39,10 @@ class aShipPlacementView(arcade.View):
         :param: width(int) - width of window
         :param: height(int) - height of window
         :param: title (string) - title of window
+
         :pre: The NumberShips class has been run and the users selected how many ships they want to play with
+        :post: ship placed correctly
+        :return: none.
         """
         super().__init__()
         # initialized global variables
@@ -63,7 +67,9 @@ class aShipPlacementView(arcade.View):
     def on_show(self):
         """
         Sets background color to black
+        :pre: none
         :post: The View has a background color
+        :return: none
         """
         # set background color to black
         arcade.set_background_color(arcade.color.BLACK)
@@ -71,7 +77,10 @@ class aShipPlacementView(arcade.View):
     def recreate_grid(self):
         """
         Redraws grid after event.
+        :param: shape_list: the list of shape based on aracde build-in function
+        :pre: none
         :post: The grid has now update after an event
+        :return: none
         """
         self.shape_list = arcade.ShapeElementList()
         # draws each grid box and assigns color based on 2Darray value
@@ -93,6 +102,7 @@ class aShipPlacementView(arcade.View):
     def on_draw(self):
         """
         Initial screen view.
+        :pre: none
         :post: The grid and text are now on the screen
         """
         arcade.start_render()
@@ -222,8 +232,10 @@ class aShipPlacementView(arcade.View):
     def on_key_press(self, key, modifiers):
         """
         Called whenever a key is pressed.
+        :param: selected ship
         :param: key (key) - key pressed
         :param: modifiers - life cycle method
+        :pre: ship placement
         :post: The ship's location is now locked on the board or the ships orientation is changed
         """
         # sets the location of first ship in board class when enter key is pressed and then remaining
@@ -280,6 +292,7 @@ class DummyView(arcade.View):
     def on_show(self):
         """
         sets background color to black
+        :pre: none
         :post: The View has a background color
         """
         arcade.set_background_color(arcade.color.ORANGE_PEEL)
@@ -287,6 +300,7 @@ class DummyView(arcade.View):
     def on_draw(self):
         """
         draws text on new window
+        :pre: none
         :post: The text is now on the screen
         """
         arcade.start_render()
@@ -302,6 +316,7 @@ class DummyView(arcade.View):
         Called whenever mouse is pressed.
         :param: key (key) - key pressed
         :param: modifiers - life cycle method
+        :pre: none
         :post: Checks to see if the mouse was pressed and advances the game state if it was
         """
         player2 = Player(DummyView.players[0].num_of_ships)

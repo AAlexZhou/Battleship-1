@@ -51,9 +51,9 @@ class MainMenu(arcade.View):
 
     def on_draw(self):
         '''
-        Ran when view is rendered to the screen
-
+        :pre: button class compiles successfully
         :post: The text and buttons are now on the screen
+        :return: none
         '''
         arcade.start_render()
         arcade.draw_text("Welcome to KRAAG Battleship!", SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2,
