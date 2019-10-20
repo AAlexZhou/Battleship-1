@@ -104,11 +104,4 @@ Topics:
 - Team KRAAG uses ARCADE 2.1.3 for the team project and for some reason it is not available on Windows and Linux machine
   so we spend lots of time to figure it out.
 - Totally the new programming language to all of us, none of us has the experience with Python before.
-- The documentation command given by Team KRAAG is not allowed to run both on Linux and Windows machine so we spent time to figure it out how
-  pydoc works on Windows machines.
-- A bug in the project.
-
-
-# Retrospective
-- We should definitely start the project earlier since none of us has the experience with Python, and there might also be the technical problems
-  we didn't expect at first. (The project can not be opened on Windows and Linux machine even some version of MacOS)
+- The documentation command given by Team KRAAG is not allowed 

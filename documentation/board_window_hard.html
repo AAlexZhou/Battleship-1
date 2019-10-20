@@ -8,7 +8,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>board_window_hard</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5C448%5Cproject2_battleship%5Cboard_window_hard.py">c:\448\project2_battleship\board_window_hard.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5C448%5Cbattleship-1%5Cboard_window_hard.py">c:\448\battleship-1\board_window_hard.py</a></font></td></tr></table>
     <p><tt>Contains&nbsp;<a href="#BoardWindow">BoardWindow</a>&nbsp;class&nbsp;and&nbsp;AI_Window&nbsp;class.<br>
 For&nbsp;hard-level&nbsp;AI,&nbsp;this&nbsp;mode&nbsp;knows&nbsp;where&nbsp;all&nbsp;your&nbsp;ships&nbsp;are&nbsp;and&nbsp;lands&nbsp;a&nbsp;hit&nbsp;on&nbsp;your&nbsp;ship<br>
 every&nbsp;turn&nbsp;so&nbsp;basically&nbsp;it's&nbsp;a&nbsp;cheater.</tt></p>
@@ -57,21 +57,26 @@ every&nbsp;turn&nbsp;so&nbsp;basically&nbsp;it's&nbsp;a&nbsp;cheater.</tt></p>
 Methods defined here:<br>
 <dl><dt><a name="AI_window-__init__"><strong>__init__</strong></a>(self, width: int, height: int, title: str, player: player.Player, on_end, is_own_board: bool)</dt><dd><tt>Initialize&nbsp;Board&nbsp;Window<br>
 &nbsp;<br>
+:param:&nbsp;shape_list:&nbsp;the&nbsp;list&nbsp;of&nbsp;shape&nbsp;based&nbsp;on&nbsp;aracde&nbsp;build-in&nbsp;function<br>
+:param:&nbsp;first:&nbsp;the&nbsp;variable&nbsp;to&nbsp;the&nbsp;players&nbsp;who&nbsp;shot&nbsp;first<br>
 :param:&nbsp;width&nbsp;(int):&nbsp;Width&nbsp;of&nbsp;window<br>
 :param:&nbsp;height&nbsp;(int):&nbsp;Height&nbsp;of&nbsp;window<br>
-:param:&nbsp;title&nbsp;(str):&nbsp;Title&nbsp;for&nbsp;Window<br>
 :param:&nbsp;player&nbsp;(Player):&nbsp;Player&nbsp;data&nbsp;this&nbsp;board&nbsp;shows<br>
 :param:&nbsp;on_end&nbsp;(Function):&nbsp;Function&nbsp;to&nbsp;call&nbsp;when&nbsp;a&nbsp;turn&nbsp;ends<br>
 :param:&nbsp;is_own_board&nbsp;(Bool):&nbsp;Is&nbsp;this&nbsp;board&nbsp;owned&nbsp;by&nbsp;the&nbsp;player&nbsp;it&nbsp;refers&nbsp;to<br>
 :return:&nbsp;None<br>
-:pre:&nbsp;Player&nbsp;has&nbsp;been&nbsp;initalized&nbsp;with&nbsp;ships&nbsp;already&nbsp;placed</tt></dd></dl>
+:pre:&nbsp;Player1&nbsp;has&nbsp;been&nbsp;initalized&nbsp;with&nbsp;ships&nbsp;already&nbsp;placed&nbsp;as&nbsp;well&nbsp;as&nbsp;easy-level&nbsp;AI's<br>
+:post:&nbsp;easy-level&nbsp;AI's&nbsp;window&nbsp;initalized</tt></dd></dl>
 
-<dl><dt><a name="AI_window-on_draw"><strong>on_draw</strong></a>(self)</dt><dd><tt>Renders&nbsp;the&nbsp;class&nbsp;to&nbsp;the&nbsp;screen</tt></dd></dl>
+<dl><dt><a name="AI_window-on_draw"><strong>on_draw</strong></a>(self)</dt><dd><tt>:param:&nbsp;none<br>
+:pre:&nbsp;AI's&nbsp;board&nbsp;must&nbsp;be&nbsp;initalized&nbsp;already<br>
+:post:&nbsp;Renders&nbsp;the&nbsp;AI&nbsp;class&nbsp;to&nbsp;the&nbsp;screen</tt></dd></dl>
 
 <dl><dt><a name="AI_window-press"><strong>press</strong></a>(self)</dt><dd><tt>Handles&nbsp;user&nbsp;shooting&nbsp;at&nbsp;a&nbsp;grid&nbsp;cell&nbsp;including&nbsp;playing&nbsp;sounds<br>
 &nbsp;<br>
 :param:&nbsp;x&nbsp;(int):&nbsp;x&nbsp;location&nbsp;of&nbsp;the&nbsp;click<br>
 :param:&nbsp;y&nbsp;(int):&nbsp;y&nbsp;location&nbsp;of&nbsp;the&nbsp;click<br>
+:param:&nbsp;player&nbsp;(Player):&nbsp;Player&nbsp;data&nbsp;this&nbsp;board&nbsp;shows<br>
 :returns:&nbsp;None<br>
 &nbsp;<br>
 :post:&nbsp;Could&nbsp;end&nbsp;turn&nbsp;if&nbsp;the&nbsp;press&nbsp;was&nbsp;valid</tt></dd></dl>
@@ -79,6 +84,7 @@ Methods defined here:<br>
 <dl><dt><a name="AI_window-recreate_grid"><strong>recreate_grid</strong></a>(self)</dt><dd><tt>Rebuild&nbsp;grid&nbsp;based&nbsp;on&nbsp;updated&nbsp;player&nbsp;data<br>
 &nbsp;<br>
 :returns:&nbsp;None<br>
+:pre:&nbsp;shape_.list<br>
 :post:&nbsp;self.<strong>shape_list</strong>&nbsp;is&nbsp;updated&nbsp;to&nbsp;reflect&nbsp;the&nbsp;changing&nbsp;player&nbsp;board&nbsp;underneath</tt></dd></dl>
 
 <hr>
@@ -173,9 +179,14 @@ Methods defined here:<br>
 :param:&nbsp;on_end&nbsp;(Function):&nbsp;Function&nbsp;to&nbsp;call&nbsp;when&nbsp;a&nbsp;turn&nbsp;ends<br>
 :param:&nbsp;is_own_board&nbsp;(Bool):&nbsp;Is&nbsp;this&nbsp;board&nbsp;owned&nbsp;by&nbsp;the&nbsp;player&nbsp;it&nbsp;refers&nbsp;to<br>
 :return:&nbsp;None<br>
-:pre:&nbsp;Player&nbsp;has&nbsp;been&nbsp;initalized&nbsp;with&nbsp;ships&nbsp;already&nbsp;placed</tt></dd></dl>
+:pre:&nbsp;Player1&nbsp;has&nbsp;been&nbsp;initalized&nbsp;with&nbsp;ships&nbsp;already&nbsp;placed&nbsp;as&nbsp;well&nbsp;as&nbsp;hard-level&nbsp;AI's</tt></dd></dl>
 
-<dl><dt><a name="BoardWindow-on_draw"><strong>on_draw</strong></a>(self)</dt><dd><tt>Renders&nbsp;the&nbsp;class&nbsp;to&nbsp;the&nbsp;screen</tt></dd></dl>
+<dl><dt><a name="BoardWindow-on_draw"><strong>on_draw</strong></a>(self)</dt><dd><tt>:pre:&nbsp;the&nbsp;board&nbsp;for&nbsp;both&nbsp;easy-level&nbsp;AI&nbsp;and&nbsp;player1&nbsp;have&nbsp;been&nbsp;initalized<br>
+:post:&nbsp;Renders&nbsp;the&nbsp;class&nbsp;to&nbsp;the&nbsp;screen<br>
+&nbsp;<br>
+:param:&nbsp;shape_list:&nbsp;the&nbsp;list&nbsp;of&nbsp;shape&nbsp;based&nbsp;on&nbsp;aracde&nbsp;build-in&nbsp;function<br>
+:param:&nbsp;player&nbsp;(Player):&nbsp;Player&nbsp;data&nbsp;this&nbsp;board&nbsp;shows<br>
+:param:&nbsp;is_own_board&nbsp;(Bool):&nbsp;Is&nbsp;this&nbsp;board&nbsp;owned&nbsp;by&nbsp;the&nbsp;player&nbsp;it&nbsp;refers&nbsp;to</tt></dd></dl>
 
 <dl><dt><a name="BoardWindow-on_key_press"><strong>on_key_press</strong></a>(self, key, modifiers)</dt><dd><tt>Override&nbsp;this&nbsp;function&nbsp;to&nbsp;add&nbsp;key&nbsp;press&nbsp;functionality.<br>
 &nbsp;<br>
@@ -188,12 +199,15 @@ Methods defined here:<br>
 :param:&nbsp;y&nbsp;(int):&nbsp;y&nbsp;location&nbsp;of&nbsp;the&nbsp;click<br>
 :returns:&nbsp;None<br>
 &nbsp;<br>
+:pre:&nbsp;all&nbsp;the&nbsp;previous&nbsp;function&nbsp;must&nbsp;be&nbsp;compiliable<br>
 :post:&nbsp;Could&nbsp;end&nbsp;turn&nbsp;if&nbsp;the&nbsp;press&nbsp;was&nbsp;valid</tt></dd></dl>
 
 <dl><dt><a name="BoardWindow-press"><strong>press</strong></a>(self)</dt><dd><tt>Handles&nbsp;user&nbsp;shooting&nbsp;at&nbsp;a&nbsp;grid&nbsp;cell&nbsp;including&nbsp;playing&nbsp;sounds<br>
 &nbsp;<br>
-:param:&nbsp;x&nbsp;(int):&nbsp;x&nbsp;location&nbsp;of&nbsp;the&nbsp;click<br>
-:param:&nbsp;y&nbsp;(int):&nbsp;y&nbsp;location&nbsp;of&nbsp;the&nbsp;click<br>
+:param:&nbsp;row:&nbsp;x<br>
+:param:&nbsp;coloum:&nbsp;y<br>
+:param:&nbsp;player.board:&nbsp;player1's&nbsp;board<br>
+:param:&nbsp;player&nbsp;(Player):&nbsp;Player&nbsp;data&nbsp;this&nbsp;board&nbsp;shows<br>
 :returns:&nbsp;None<br>
 &nbsp;<br>
 :post:&nbsp;Could&nbsp;end&nbsp;turn&nbsp;if&nbsp;the&nbsp;press&nbsp;was&nbsp;valid</tt></dd></dl>
@@ -201,7 +215,10 @@ Methods defined here:<br>
 <dl><dt><a name="BoardWindow-recreate_grid"><strong>recreate_grid</strong></a>(self)</dt><dd><tt>Rebuild&nbsp;grid&nbsp;based&nbsp;on&nbsp;updated&nbsp;player&nbsp;data<br>
 &nbsp;<br>
 :returns:&nbsp;None<br>
-:post:&nbsp;self.<strong>shape_list</strong>&nbsp;is&nbsp;updated&nbsp;to&nbsp;reflect&nbsp;the&nbsp;changing&nbsp;player&nbsp;board&nbsp;underneath</tt></dd></dl>
+:param:&nbsp;shape_list:&nbsp;the&nbsp;list&nbsp;of&nbsp;shape&nbsp;based&nbsp;on&nbsp;aracde&nbsp;build-in&nbsp;function<br>
+&nbsp;<br>
+:post:&nbsp;self.<strong>shape_list</strong>&nbsp;is&nbsp;updated&nbsp;to&nbsp;reflect&nbsp;the&nbsp;changing&nbsp;player&nbsp;board&nbsp;underneath<br>
+:post:&nbsp;color&nbsp;setup</tt></dd></dl>
 
 <hr>
 Methods inherited from <a href="arcade.application.html#View">arcade.application.View</a>:<br>
@@ -279,5 +296,6 @@ sequence&nbsp;is&nbsp;empty.</tt></dd></dl>
 <td width="100%"><strong>CELL_HEIGHT</strong> = 80<br>
 <strong>CELL_WIDTH</strong> = 80<br>
 <strong>MARGIN</strong> = 5<br>
-<strong>OFFSET</strong> = 30</td></tr></table>
+<strong>OFFSET</strong> = 30<br>
+<strong>first</strong> = True</td></tr></table>
 </body></html>
