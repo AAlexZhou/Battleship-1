@@ -161,8 +161,8 @@ class BoardWindow(arcade.View):
                         arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
                     else:
                         arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
-                if row < 8 and column + 1 < 8 and row - 1 >= 0 and column >= 0:
-                    if self.player.be_attacked(row - 1, column + 1):
+                if row + 1 < 8 and column < 8 and row >= 0 and column - 1 >= 0:
+                    if self.player.be_attacked(row + 1, column - 1):
                         arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
                     else:
                         arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))

@@ -38,10 +38,7 @@ class ShipPlacementView_hard(arcade.View):
     def __init__(self, player: Player):
         """
         Application constructor.
-        :param: width(int) - width of window
-        :param: height(int) - height of window
-        :param: title (string) - title of window
-
+        :param: player class
         :pre: The NumberShips class has been run and the users selected how many ships they want to play with
         :post: ship placed correctly
         :return: none.
@@ -312,6 +309,8 @@ class DummyView(arcade.View):
         if DummyView.iterations == 2:
             arcade.draw_text("Starting Game", 200, 450, arcade.color.WHITE, 54)
             arcade.draw_text("Click when Player 1 is ready to play", 180, 400, arcade.color.WHITE, 25)
+            arcade.draw_text("Hits: Pressing TAB during game can trigger special shots", 200, 350, arcade.color.WHITE,
+                             15)
         else:
             arcade.draw_text("Next Player TURN", 140, 450, arcade.color.WHITE, 54)
             arcade.draw_text("Click when next player is ready", 180, 400, arcade.color.WHITE, 25)
@@ -365,7 +364,7 @@ class AI_place(arcade.View):
             self.grid.append([])
             for column in range(COLUMN_COUNT):
                 self.grid[row].append(0)  # Append a cell
-        for i in range(50):
+        for i in range(35):
             self.place()
             self.recreate_grid()
             self.next()
@@ -431,14 +430,10 @@ class AI_place(arcade.View):
 
     def place(self):
         """
-            Called when the user presses a mouse button.
-            :param: x (int) - x location of mouse press
-            :param: y (int) - y location of mouse press
-            :param: button (button) - button of mouse press
-            :param: modifiers - life cycle method
+            Allow AI to place ship
             :post: Checks to see if a grid cell was pressed and places a ship accordingly
             """
-        # Change the x/y screen coordinates to grid coordinates
+        # Random row and column number
         row = random.randint(1, 8)
         self.row = row
         column = random.randint(1, 8)
@@ -523,9 +518,7 @@ class AI_place(arcade.View):
 
     def next(self):
         """
-             Called whenever a key is pressed.
-             :param: key (key) - key pressed
-             :param: modifiers - life cycle method
+             Allow game to progress
              :post: The ship's location is now locked on the board or the ships orientation is changed
              """
         # sets the location of first ship in board class when enter key is pressed and then remaining
@@ -539,8 +532,3 @@ class AI_place(arcade.View):
                 self.length_of_ship = self.length_of_ship - 1
                 self.row = 0
                 self.column = 0
-
-
-
-        # allows the orientation of the ship placement to change between horizontal and vertical
-        # when space bar is pushed and a ship is not currently selected

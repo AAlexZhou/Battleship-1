@@ -35,6 +35,7 @@ class aiGame_hard:
         self.turn_over = True
         self.game_over = False
         self.is_game_over = False
+        self.count = 0
         self.own_board = arcade.Window(715, 715, "Your Board")
         self.other_board = arcade.Window(715, 715, "Their Board")
 
@@ -84,7 +85,9 @@ class aiGame_hard:
         arcade.pause(1.5)
         y = self.player1.x
         z = self.player2.x
+        self.count += 1
         print(f"                         ScoreBoard                                  ")
+        print('                           Round', self.count, '                        ')
         print(f"Player 1's Score: ")
         print(z)
         print(f"")
