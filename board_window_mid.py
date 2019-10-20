@@ -287,7 +287,7 @@ class AI_window(arcade.View):
                             row = i - 1
                             column = j
                             break
-                        elif j != 7 and grid[i][j+1] == CellStatus.EMPT:
+                        elif j != 7 and grid[i][j+1] == CellStatus.EMPTY:
                             row = i
                             column = j + 1
                             break
