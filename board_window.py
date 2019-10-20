@@ -15,7 +15,7 @@ CELL_HEIGHT = 80
 
 # This sets the margin between each cell
 MARGIN = 5
-
+special = False
 OFFSET = 30
 
 
@@ -104,7 +104,7 @@ class BoardWindow(arcade.View):
 
         :post: Could end turn if the press was valid
         """
-
+        global special
         if self.is_own_board:
             return
 
@@ -115,43 +115,66 @@ class BoardWindow(arcade.View):
         print(f"Click coordinates: ({x}, {y}). Grid coordinates: ({row}, {column})")
 
         if row < 8 and column < 8 and row >= 0 and column >= 0:
-            if self.player.be_attacked(row, column):
-                arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
-            else:
-                arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
-            self.recreate_grid()
-            self.on_end()
+            # if TAB trigger special shots then it will fire special shots otherwise no
+            if special == False:
+                if self.player.be_attacked(row, column):
+                    arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
+                else:
+                    arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
+                self.recreate_grid()
+                self.on_end()
+            elif special == True:
+                # set special shots to normal
+                special = False
+                if self.player.be_attacked(row, column):
+                    arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
+                else:
+                    arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
+                if row + 1 < 8 and column < 8 and row >= 0 and column >= 0:
+                    if self.player.be_attacked(row + 1, column):
+                        arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
+                    else:
+                        arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
+                if row < 8 and column + 1 < 8 and row >= 0 and column >= 0:
+                    if self.player.be_attacked(row, column + 1):
+                        arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
+                    else:
+                        arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
+                if row < 8 and column < 8 and row - 1 >= 0 and column >= 0:
+                    if self.player.be_attacked(row - 1, column):
+                        arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
+                    else:
+                        arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
+                if row < 8 and column < 8 and row >= 0 and column - 1 >= 0:
+                    if self.player.be_attacked(row, column - 1):
+                        arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
+                    else:
+                        arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
+                # Four Head
+                if row + 1 < 8 and column + 1 < 8 and row >= 0 and column >= 0:
+                    if self.player.be_attacked(row + 1, column + 1):
+                        arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
+                    else:
+                        arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
+                if row < 8 and column + 1 < 8 and row - 1 >= 0 and column >= 0:
+                    if self.player.be_attacked(row - 1, column + 1):
+                        arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
+                    else:
+                        arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
+                if row + 1 < 8 and column < 8 and row >= 0 and column - 1 >= 0:
+                    if self.player.be_attacked(row + 1, column - 1):
+                        arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
+                    else:
+                        arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
+                if row < 8 and column < 8 and row - 1 >= 0 and column - 1 >= 0:
+                    if self.player.be_attacked(row - 1, column - 1):
+                        arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
+                    else:
+                        arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
+                self.recreate_grid()
+                self.on_end()
 
     def on_key_press(self, key, modifiers):
+        global special
         if key == arcade.key.TAB:
-            self.press()
-            self.press()
-            self.on_end()
-
-    def press(self):
-        """
-        Handles user shooting at a grid cell including playing sounds
-
-        :param: x (int): x location of the click
-        :param: y (int): y location of the click
-        :returns: None
-
-        :post: Could end turn if the press was valid
-        """
-
-        # Change the x/y screen coordinates to grid coordinates
-        row = random.randint(0, 7)
-        column = random.randint(0, 7)
-        grid = self.player.board.get_board_view()[0]
-        while grid[row][column] != CellStatus.EMPTY:
-            row = random.randint(0, 7)
-            column = random.randint(0, 7)
-        print(f"Grid coordinates: ({row}, {column})")
-
-        if row < 8 and column < 8 and row >= 0 and column >= 0:
-            if self.player.be_attacked(row, column):
-                arcade.play_sound(arcade.load_sound('./sounds/hit.m4a'))
-
-            else:
-                arcade.play_sound(arcade.load_sound('./sounds/miss.m4a'))
-            self.recreate_grid()
+            special = True

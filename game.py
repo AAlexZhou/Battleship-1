@@ -37,6 +37,7 @@ class Game:
         self.turn_over = True
         self.game_over = False
         self.is_game_over = False
+        self.count = 0
 
         self.own_board = arcade.Window(715, 715, "Your Board")
         self.other_board = arcade.Window(715, 715, "Their Board")
@@ -87,6 +88,7 @@ class Game:
         """
         if self.current_player == self.player1:
             self.current_player = self.player2
+            self.count += 1
 
         else:
             self.current_player = self.player1
@@ -95,6 +97,7 @@ class Game:
         y = self.player1.x
         z = self.player2.x
         print(f"                         ScoreBoard                                  ")
+        print('                           Round', self.count, '                        ')
         print(f"Player 1's Score: ")
         print(z)
         print(f"")
