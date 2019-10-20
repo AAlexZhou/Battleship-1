@@ -8,7 +8,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>popup_modal</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/grantgollier/OneDrive%20-%20The%20University%20of%20Kansas/EECS448/Battleship/popup_modal.py">/Users/grantgollier/OneDrive - The University of Kansas/EECS448/Battleship/popup_modal.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5C448%5Cbattleship-1%5Cpopup_modal.py">c:\448\battleship-1\popup_modal.py</a></font></td></tr></table>
     <p><tt>Simple&nbsp;<a href="#PopupModal">PopupModal</a>&nbsp;to&nbsp;display&nbsp;user&nbsp;messages</tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -26,7 +26,7 @@
     
 <tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><dl>
-<dt><font face="helvetica, arial"><a href="arcade.application.html#Window">arcade.application.Window</a>(<a href="pyglet.window.cocoa.html#CocoaWindow">pyglet.window.cocoa.CocoaWindow</a>)
+<dt><font face="helvetica, arial"><a href="arcade.application.html#Window">arcade.application.Window</a>(<a href="pyglet.window.win32.html#Win32Window">pyglet.window.win32.Win32Window</a>)
 </font></dt><dd>
 <dl>
 <dt><font face="helvetica, arial"><a href="popup_modal.html#PopupModal">PopupModal</a>
@@ -47,7 +47,7 @@
 <td width="100%"><dl><dt>Method resolution order:</dt>
 <dd><a href="popup_modal.html#PopupModal">PopupModal</a></dd>
 <dd><a href="arcade.application.html#Window">arcade.application.Window</a></dd>
-<dd><a href="pyglet.window.cocoa.html#CocoaWindow">pyglet.window.cocoa.CocoaWindow</a></dd>
+<dd><a href="pyglet.window.win32.html#Win32Window">pyglet.window.win32.Win32Window</a></dd>
 <dd><a href="pyglet.window.html#BaseWindow">pyglet.window.BaseWindow</a></dd>
 <dd><a href="pyglet.event.html#EventDispatcher">pyglet.event.EventDispatcher</a></dd>
 <dd><a href="builtins.html#object">builtins.object</a></dd>
@@ -61,6 +61,31 @@ Methods defined here:<br>
 
 <hr>
 Methods inherited from <a href="arcade.application.html#Window">arcade.application.Window</a>:<br>
+<dl><dt><a name="PopupModal-activate"><strong>activate</strong></a>(self)</dt><dd><tt>Attempt&nbsp;to&nbsp;restore&nbsp;keyboard&nbsp;focus&nbsp;to&nbsp;the&nbsp;window.<br>
+&nbsp;<br>
+Depending&nbsp;on&nbsp;the&nbsp;window&nbsp;manager&nbsp;or&nbsp;operating&nbsp;system,&nbsp;this&nbsp;may&nbsp;not<br>
+be&nbsp;successful.&nbsp;&nbsp;For&nbsp;example,&nbsp;on&nbsp;Windows&nbsp;XP&nbsp;an&nbsp;application&nbsp;is&nbsp;not<br>
+allowed&nbsp;to&nbsp;"steal"&nbsp;focus&nbsp;from&nbsp;another&nbsp;application.&nbsp;&nbsp;Instead,&nbsp;the<br>
+window's&nbsp;taskbar&nbsp;icon&nbsp;will&nbsp;flash,&nbsp;indicating&nbsp;it&nbsp;requires&nbsp;attention.</tt></dd></dl>
+
+<dl><dt><a name="PopupModal-dispatch_events"><strong>dispatch_events</strong></a>(self)</dt><dd><tt>Poll&nbsp;the&nbsp;operating&nbsp;system&nbsp;event&nbsp;queue&nbsp;for&nbsp;new&nbsp;events&nbsp;and&nbsp;call<br>
+attached&nbsp;event&nbsp;handlers.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;is&nbsp;provided&nbsp;for&nbsp;legacy&nbsp;applications&nbsp;targeting&nbsp;pyglet&nbsp;1.0,<br>
+and&nbsp;advanced&nbsp;applications&nbsp;that&nbsp;must&nbsp;integrate&nbsp;their&nbsp;event&nbsp;loop<br>
+into&nbsp;another&nbsp;framework.<br>
+&nbsp;<br>
+Typical&nbsp;applications&nbsp;should&nbsp;use&nbsp;`pyglet.app.run`.</tt></dd></dl>
+
+<dl><dt><a name="PopupModal-flip"><strong>flip</strong></a>(self)</dt><dd><tt>Swap&nbsp;the&nbsp;OpenGL&nbsp;front&nbsp;and&nbsp;back&nbsp;buffers.<br>
+&nbsp;<br>
+Call&nbsp;this&nbsp;method&nbsp;on&nbsp;a&nbsp;double-buffered&nbsp;window&nbsp;to&nbsp;update&nbsp;the<br>
+visible&nbsp;display&nbsp;with&nbsp;the&nbsp;back&nbsp;buffer.&nbsp;&nbsp;The&nbsp;contents&nbsp;of&nbsp;the&nbsp;back&nbsp;buffer<br>
+is&nbsp;undefined&nbsp;after&nbsp;this&nbsp;operation.<br>
+&nbsp;<br>
+Windows&nbsp;are&nbsp;double-buffered&nbsp;by&nbsp;default.&nbsp;&nbsp;This&nbsp;method&nbsp;is&nbsp;called<br>
+automatically&nbsp;by&nbsp;`EventLoop`&nbsp;after&nbsp;the&nbsp;:py:meth:`~pyglet.window.<a href="arcade.application.html#Window">Window</a>.on_draw`&nbsp;event.</tt></dd></dl>
+
 <dl><dt><a name="PopupModal-get_location"><strong>get_location</strong></a>(self) -&gt; Tuple[int, int]</dt><dd><tt>Return&nbsp;the&nbsp;X/Y&nbsp;coordinates&nbsp;of&nbsp;the&nbsp;window<br>
 &nbsp;<br>
 :returns:&nbsp;x,&nbsp;y&nbsp;of&nbsp;window&nbsp;location</tt></dd></dl>
@@ -69,7 +94,29 @@ Methods inherited from <a href="arcade.application.html#Window">arcade.applicati
 &nbsp;<br>
 :returns:&nbsp;(width,&nbsp;height)</tt></dd></dl>
 
+<dl><dt><a name="PopupModal-get_system_mouse_cursor"><strong>get_system_mouse_cursor</strong></a>(self, name)</dt><dd><tt>Obtain&nbsp;a&nbsp;system&nbsp;mouse&nbsp;cursor.<br>
+&nbsp;<br>
+Use&nbsp;`set_mouse_cursor`&nbsp;to&nbsp;make&nbsp;the&nbsp;cursor&nbsp;returned&nbsp;by&nbsp;this&nbsp;method<br>
+active.&nbsp;&nbsp;The&nbsp;names&nbsp;accepted&nbsp;by&nbsp;this&nbsp;method&nbsp;are&nbsp;the&nbsp;``CURSOR_*``<br>
+constants&nbsp;defined&nbsp;on&nbsp;this&nbsp;class.<br>
+&nbsp;<br>
+:Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`name`&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name&nbsp;describing&nbsp;the&nbsp;mouse&nbsp;cursor&nbsp;to&nbsp;return.&nbsp;&nbsp;For&nbsp;example,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;``CURSOR_WAIT``,&nbsp;``CURSOR_HELP``,&nbsp;etc.<br>
+&nbsp;<br>
+:rtype:&nbsp;`MouseCursor`<br>
+:return:&nbsp;A&nbsp;mouse&nbsp;cursor&nbsp;which&nbsp;can&nbsp;be&nbsp;used&nbsp;with&nbsp;`set_mouse_cursor`.</tt></dd></dl>
+
 <dl><dt><a name="PopupModal-get_viewport"><strong>get_viewport</strong></a>(self) -&gt; (&lt;class 'float'&gt;, &lt;class 'float'&gt;, &lt;class 'float'&gt;, &lt;class 'float'&gt;)</dt><dd><tt>Get&nbsp;the&nbsp;viewport.&nbsp;(What&nbsp;coordinates&nbsp;we&nbsp;can&nbsp;see.)</tt></dd></dl>
+
+<dl><dt><a name="PopupModal-maximize"><strong>maximize</strong></a>(self)</dt><dd><tt>Maximize&nbsp;the&nbsp;window.<br>
+&nbsp;<br>
+The&nbsp;behaviour&nbsp;of&nbsp;this&nbsp;method&nbsp;is&nbsp;somewhat&nbsp;dependent&nbsp;on&nbsp;the&nbsp;user's<br>
+display&nbsp;setup.&nbsp;&nbsp;On&nbsp;a&nbsp;multi-monitor&nbsp;system,&nbsp;the&nbsp;window&nbsp;may&nbsp;maximize<br>
+to&nbsp;either&nbsp;a&nbsp;single&nbsp;screen&nbsp;or&nbsp;the&nbsp;entire&nbsp;virtual&nbsp;desktop.</tt></dd></dl>
+
+<dl><dt><a name="PopupModal-minimize"><strong>minimize</strong></a>(self)</dt><dd><tt>Minimize&nbsp;the&nbsp;window.</tt></dd></dl>
 
 <dl><dt><a name="PopupModal-on_key_press"><strong>on_key_press</strong></a>(self, symbol: int, modifiers: int)</dt><dd><tt>Override&nbsp;this&nbsp;function&nbsp;to&nbsp;add&nbsp;key&nbsp;press&nbsp;functionality.<br>
 &nbsp;<br>
@@ -130,127 +177,6 @@ is&nbsp;resized.<br>
 &nbsp;<br>
 :param&nbsp;float&nbsp;delta_time:&nbsp;Time&nbsp;interval&nbsp;since&nbsp;the&nbsp;last&nbsp;time&nbsp;the&nbsp;function&nbsp;was&nbsp;called.</tt></dd></dl>
 
-<dl><dt><a name="PopupModal-set_max_size"><strong>set_max_size</strong></a>(self, width: float, height: float)</dt><dd><tt>Wrap&nbsp;the&nbsp;Pyglet&nbsp;window&nbsp;call&nbsp;to&nbsp;set&nbsp;maximum&nbsp;size<br>
-&nbsp;<br>
-:param&nbsp;float&nbsp;width:&nbsp;width&nbsp;in&nbsp;pixels.<br>
-:param&nbsp;float&nbsp;height:&nbsp;height&nbsp;in&nbsp;pixels.<br>
-:Raises&nbsp;ValueError:</tt></dd></dl>
-
-<dl><dt><a name="PopupModal-set_min_size"><strong>set_min_size</strong></a>(self, width: float, height: float)</dt><dd><tt>Wrap&nbsp;the&nbsp;Pyglet&nbsp;window&nbsp;call&nbsp;to&nbsp;set&nbsp;minimum&nbsp;size<br>
-&nbsp;<br>
-:param&nbsp;float&nbsp;width:&nbsp;width&nbsp;in&nbsp;pixels.<br>
-:param&nbsp;float&nbsp;height:&nbsp;height&nbsp;in&nbsp;pixels.</tt></dd></dl>
-
-<dl><dt><a name="PopupModal-set_mouse_visible"><strong>set_mouse_visible</strong></a>(self, visible: bool = True)</dt><dd><tt>If&nbsp;true,&nbsp;user&nbsp;can&nbsp;see&nbsp;the&nbsp;mouse&nbsp;cursor&nbsp;while&nbsp;it&nbsp;is&nbsp;over&nbsp;the&nbsp;window.&nbsp;Set&nbsp;false,<br>
-the&nbsp;mouse&nbsp;is&nbsp;not&nbsp;visible.&nbsp;Default&nbsp;is&nbsp;true.<br>
-&nbsp;<br>
-:param&nbsp;bool&nbsp;visible:</tt></dd></dl>
-
-<dl><dt><a name="PopupModal-set_size"><strong>set_size</strong></a>(self, width: float, height: float)</dt><dd><tt>Ignore&nbsp;the&nbsp;resizable&nbsp;flag&nbsp;and&nbsp;set&nbsp;the&nbsp;size<br>
-&nbsp;<br>
-:param&nbsp;float&nbsp;width:<br>
-:param&nbsp;float&nbsp;height:</tt></dd></dl>
-
-<dl><dt><a name="PopupModal-set_update_rate"><strong>set_update_rate</strong></a>(self, rate: float)</dt><dd><tt>Set&nbsp;how&nbsp;often&nbsp;the&nbsp;screen&nbsp;should&nbsp;be&nbsp;updated.<br>
-For&nbsp;example,&nbsp;self.<a href="#PopupModal-set_update_rate">set_update_rate</a>(1&nbsp;/&nbsp;60)&nbsp;will&nbsp;set&nbsp;the&nbsp;update&nbsp;rate&nbsp;to&nbsp;60&nbsp;fps<br>
-&nbsp;<br>
-:param&nbsp;float&nbsp;rate:&nbsp;Update&nbsp;frequency&nbsp;in&nbsp;seconds</tt></dd></dl>
-
-<dl><dt><a name="PopupModal-set_viewport"><strong>set_viewport</strong></a>(self, left: numbers.Number, right: numbers.Number, bottom: numbers.Number, top: numbers.Number)</dt><dd><tt>Set&nbsp;the&nbsp;viewport.&nbsp;(What&nbsp;coordinates&nbsp;we&nbsp;can&nbsp;see.<br>
-Used&nbsp;to&nbsp;scale&nbsp;and/or&nbsp;scroll&nbsp;the&nbsp;screen.)<br>
-&nbsp;<br>
-:param&nbsp;Number&nbsp;left:<br>
-:param&nbsp;Number&nbsp;right:<br>
-:param&nbsp;Number&nbsp;bottom:<br>
-:param&nbsp;Number&nbsp;top:</tt></dd></dl>
-
-<dl><dt><a name="PopupModal-set_visible"><strong>set_visible</strong></a>(self, visible=True)</dt><dd><tt>Set&nbsp;if&nbsp;the&nbsp;window&nbsp;is&nbsp;visible&nbsp;or&nbsp;not.&nbsp;Normally,&nbsp;a&nbsp;program's&nbsp;window&nbsp;is&nbsp;visible.<br>
-&nbsp;<br>
-:param&nbsp;bool&nbsp;visible:</tt></dd></dl>
-
-<dl><dt><a name="PopupModal-show_view"><strong>show_view</strong></a>(self, new_view: 'View')</dt></dl>
-
-<dl><dt><a name="PopupModal-test"><strong>test</strong></a>(self, frames: int = 10)</dt><dd><tt>Used&nbsp;by&nbsp;unit&nbsp;test&nbsp;cases.&nbsp;Runs&nbsp;the&nbsp;event&nbsp;loop&nbsp;a&nbsp;few&nbsp;times&nbsp;and&nbsp;stops.<br>
-&nbsp;<br>
-:param&nbsp;int&nbsp;frames:</tt></dd></dl>
-
-<dl><dt><a name="PopupModal-update"><strong>update</strong></a>(self, delta_time: float)</dt><dd><tt>Move&nbsp;everything.&nbsp;For&nbsp;better&nbsp;consistency&nbsp;in&nbsp;naming,&nbsp;use&nbsp;``on_update``&nbsp;instead.<br>
-&nbsp;<br>
-:param&nbsp;float&nbsp;delta_time:&nbsp;Time&nbsp;interval&nbsp;since&nbsp;the&nbsp;last&nbsp;time&nbsp;the&nbsp;function&nbsp;was&nbsp;called&nbsp;in&nbsp;seconds.</tt></dd></dl>
-
-<hr>
-Methods inherited from <a href="pyglet.window.cocoa.html#CocoaWindow">pyglet.window.cocoa.CocoaWindow</a>:<br>
-<dl><dt><a name="PopupModal-activate"><strong>activate</strong></a>(self)</dt><dd><tt>Attempt&nbsp;to&nbsp;restore&nbsp;keyboard&nbsp;focus&nbsp;to&nbsp;the&nbsp;window.<br>
-&nbsp;<br>
-Depending&nbsp;on&nbsp;the&nbsp;window&nbsp;manager&nbsp;or&nbsp;operating&nbsp;system,&nbsp;this&nbsp;may&nbsp;not<br>
-be&nbsp;successful.&nbsp;&nbsp;For&nbsp;example,&nbsp;on&nbsp;Windows&nbsp;XP&nbsp;an&nbsp;application&nbsp;is&nbsp;not<br>
-allowed&nbsp;to&nbsp;"steal"&nbsp;focus&nbsp;from&nbsp;another&nbsp;application.&nbsp;&nbsp;Instead,&nbsp;the<br>
-window's&nbsp;taskbar&nbsp;icon&nbsp;will&nbsp;flash,&nbsp;indicating&nbsp;it&nbsp;requires&nbsp;attention.</tt></dd></dl>
-
-<dl><dt><a name="PopupModal-close"><strong>close</strong></a>(self)</dt><dd><tt>Close&nbsp;the&nbsp;window.<br>
-&nbsp;<br>
-After&nbsp;closing&nbsp;the&nbsp;window,&nbsp;the&nbsp;GL&nbsp;context&nbsp;will&nbsp;be&nbsp;invalid.&nbsp;&nbsp;The<br>
-window&nbsp;instance&nbsp;cannot&nbsp;be&nbsp;reused&nbsp;once&nbsp;closed&nbsp;(see&nbsp;also&nbsp;`set_visible`).<br>
-&nbsp;<br>
-The&nbsp;`pyglet.app.EventLoop.on_window_close`&nbsp;event&nbsp;is&nbsp;dispatched&nbsp;on<br>
-`pyglet.app.event_loop`&nbsp;when&nbsp;this&nbsp;method&nbsp;is&nbsp;called.</tt></dd></dl>
-
-<dl><dt><a name="PopupModal-dispatch_events"><strong>dispatch_events</strong></a>(self)</dt><dd><tt>Poll&nbsp;the&nbsp;operating&nbsp;system&nbsp;event&nbsp;queue&nbsp;for&nbsp;new&nbsp;events&nbsp;and&nbsp;call<br>
-attached&nbsp;event&nbsp;handlers.<br>
-&nbsp;<br>
-This&nbsp;method&nbsp;is&nbsp;provided&nbsp;for&nbsp;legacy&nbsp;applications&nbsp;targeting&nbsp;pyglet&nbsp;1.0,<br>
-and&nbsp;advanced&nbsp;applications&nbsp;that&nbsp;must&nbsp;integrate&nbsp;their&nbsp;event&nbsp;loop<br>
-into&nbsp;another&nbsp;framework.<br>
-&nbsp;<br>
-Typical&nbsp;applications&nbsp;should&nbsp;use&nbsp;`pyglet.app.run`.</tt></dd></dl>
-
-<dl><dt><a name="PopupModal-dispatch_pending_events"><strong>dispatch_pending_events</strong></a>(self)</dt></dl>
-
-<dl><dt><a name="PopupModal-flip"><strong>flip</strong></a>(self)</dt><dd><tt>Swap&nbsp;the&nbsp;OpenGL&nbsp;front&nbsp;and&nbsp;back&nbsp;buffers.<br>
-&nbsp;<br>
-Call&nbsp;this&nbsp;method&nbsp;on&nbsp;a&nbsp;double-buffered&nbsp;window&nbsp;to&nbsp;update&nbsp;the<br>
-visible&nbsp;display&nbsp;with&nbsp;the&nbsp;back&nbsp;buffer.&nbsp;&nbsp;The&nbsp;contents&nbsp;of&nbsp;the&nbsp;back&nbsp;buffer<br>
-is&nbsp;undefined&nbsp;after&nbsp;this&nbsp;operation.<br>
-&nbsp;<br>
-Windows&nbsp;are&nbsp;double-buffered&nbsp;by&nbsp;default.&nbsp;&nbsp;This&nbsp;method&nbsp;is&nbsp;called<br>
-automatically&nbsp;by&nbsp;`EventLoop`&nbsp;after&nbsp;the&nbsp;:py:meth:`~pyglet.window.<a href="arcade.application.html#Window">Window</a>.on_draw`&nbsp;event.</tt></dd></dl>
-
-<dl><dt><a name="PopupModal-get_framebuffer_size"><strong>get_framebuffer_size</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;size&nbsp;in&nbsp;actual&nbsp;pixels&nbsp;of&nbsp;the&nbsp;<a href="arcade.application.html#Window">Window</a>&nbsp;framebuffer.<br>
-&nbsp;<br>
-When&nbsp;using&nbsp;HiDPI&nbsp;screens,&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;<a href="arcade.application.html#Window">Window</a>'s&nbsp;framebuffer<br>
-can&nbsp;be&nbsp;higher&nbsp;than&nbsp;that&nbsp;of&nbsp;the&nbsp;<a href="arcade.application.html#Window">Window</a>&nbsp;size&nbsp;requested.&nbsp;If&nbsp;you<br>
-are&nbsp;performing&nbsp;operations&nbsp;that&nbsp;require&nbsp;knowing&nbsp;the&nbsp;actual&nbsp;number<br>
-of&nbsp;pixels&nbsp;in&nbsp;the&nbsp;window,&nbsp;this&nbsp;method&nbsp;should&nbsp;be&nbsp;used&nbsp;instead&nbsp;of<br>
-:py:func:`<a href="arcade.application.html#Window">Window</a>.<a href="#PopupModal-get_size">get_size</a>()`.&nbsp;For&nbsp;example,&nbsp;setting&nbsp;the&nbsp;<a href="arcade.application.html#Window">Window</a><br>
-projection&nbsp;or&nbsp;setting&nbsp;the&nbsp;glViewport&nbsp;size.<br>
-&nbsp;<br>
-:rtype:&nbsp;(int,&nbsp;int)<br>
-:return:&nbsp;The&nbsp;width&nbsp;and&nbsp;height&nbsp;of&nbsp;the&nbsp;<a href="arcade.application.html#Window">Window</a>&nbsp;viewport,&nbsp;in&nbsp;pixels.</tt></dd></dl>
-
-<dl><dt><a name="PopupModal-get_system_mouse_cursor"><strong>get_system_mouse_cursor</strong></a>(self, name)</dt><dd><tt>Obtain&nbsp;a&nbsp;system&nbsp;mouse&nbsp;cursor.<br>
-&nbsp;<br>
-Use&nbsp;`set_mouse_cursor`&nbsp;to&nbsp;make&nbsp;the&nbsp;cursor&nbsp;returned&nbsp;by&nbsp;this&nbsp;method<br>
-active.&nbsp;&nbsp;The&nbsp;names&nbsp;accepted&nbsp;by&nbsp;this&nbsp;method&nbsp;are&nbsp;the&nbsp;``CURSOR_*``<br>
-constants&nbsp;defined&nbsp;on&nbsp;this&nbsp;class.<br>
-&nbsp;<br>
-:Parameters:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`name`&nbsp;:&nbsp;str<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name&nbsp;describing&nbsp;the&nbsp;mouse&nbsp;cursor&nbsp;to&nbsp;return.&nbsp;&nbsp;For&nbsp;example,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;``CURSOR_WAIT``,&nbsp;``CURSOR_HELP``,&nbsp;etc.<br>
-&nbsp;<br>
-:rtype:&nbsp;`MouseCursor`<br>
-:return:&nbsp;A&nbsp;mouse&nbsp;cursor&nbsp;which&nbsp;can&nbsp;be&nbsp;used&nbsp;with&nbsp;`set_mouse_cursor`.</tt></dd></dl>
-
-<dl><dt><a name="PopupModal-get_viewport_size"><strong>get_viewport_size</strong></a> = <a href="#PopupModal-get_framebuffer_size">get_framebuffer_size</a>(self)</dt></dl>
-
-<dl><dt><a name="PopupModal-maximize"><strong>maximize</strong></a>(self)</dt><dd><tt>Maximize&nbsp;the&nbsp;window.<br>
-&nbsp;<br>
-The&nbsp;behaviour&nbsp;of&nbsp;this&nbsp;method&nbsp;is&nbsp;somewhat&nbsp;dependent&nbsp;on&nbsp;the&nbsp;user's<br>
-display&nbsp;setup.&nbsp;&nbsp;On&nbsp;a&nbsp;multi-monitor&nbsp;system,&nbsp;the&nbsp;window&nbsp;may&nbsp;maximize<br>
-to&nbsp;either&nbsp;a&nbsp;single&nbsp;screen&nbsp;or&nbsp;the&nbsp;entire&nbsp;virtual&nbsp;desktop.</tt></dd></dl>
-
-<dl><dt><a name="PopupModal-minimize"><strong>minimize</strong></a>(self)</dt><dd><tt>Minimize&nbsp;the&nbsp;window.</tt></dd></dl>
-
 <dl><dt><a name="PopupModal-set_caption"><strong>set_caption</strong></a>(self, caption)</dt><dd><tt>Set&nbsp;the&nbsp;window's&nbsp;caption.<br>
 &nbsp;<br>
 The&nbsp;caption&nbsp;appears&nbsp;in&nbsp;the&nbsp;titlebar&nbsp;of&nbsp;the&nbsp;window,&nbsp;if&nbsp;it&nbsp;has&nbsp;one,<br>
@@ -286,19 +212,6 @@ the&nbsp;relative&nbsp;motion&nbsp;parameters&nbsp;``dx``&nbsp;and&nbsp;``dy``.<
 &nbsp;&nbsp;&nbsp;&nbsp;`exclusive`&nbsp;:&nbsp;bool<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;True,&nbsp;exclusive&nbsp;mouse&nbsp;is&nbsp;enabled,&nbsp;otherwise&nbsp;it&nbsp;is&nbsp;disabled.</tt></dd></dl>
 
-<dl><dt><a name="PopupModal-set_icon"><strong>set_icon</strong></a>(self, *images)</dt><dd><tt>Set&nbsp;the&nbsp;window&nbsp;icon.<br>
-&nbsp;<br>
-If&nbsp;multiple&nbsp;images&nbsp;are&nbsp;provided,&nbsp;one&nbsp;with&nbsp;an&nbsp;appropriate&nbsp;size<br>
-will&nbsp;be&nbsp;selected&nbsp;(if&nbsp;the&nbsp;correct&nbsp;size&nbsp;is&nbsp;not&nbsp;provided,&nbsp;the&nbsp;image<br>
-will&nbsp;be&nbsp;scaled).<br>
-&nbsp;<br>
-Useful&nbsp;sizes&nbsp;to&nbsp;provide&nbsp;are&nbsp;16x16,&nbsp;32x32,&nbsp;64x64&nbsp;(Mac&nbsp;only)&nbsp;and<br>
-128x128&nbsp;(Mac&nbsp;only).<br>
-&nbsp;<br>
-:Parameters:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;`images`&nbsp;:&nbsp;sequence&nbsp;of&nbsp;`pyglet.image.AbstractImage`<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;images&nbsp;to&nbsp;use&nbsp;for&nbsp;the&nbsp;window&nbsp;icon.</tt></dd></dl>
-
 <dl><dt><a name="PopupModal-set_location"><strong>set_location</strong></a>(self, x, y)</dt><dd><tt>Set&nbsp;the&nbsp;position&nbsp;of&nbsp;the&nbsp;window.<br>
 &nbsp;<br>
 :Parameters:<br>
@@ -308,6 +221,12 @@ Useful&nbsp;sizes&nbsp;to&nbsp;provide&nbsp;are&nbsp;16x16,&nbsp;32x32,&nbsp;64x
 &nbsp;&nbsp;&nbsp;&nbsp;`y`&nbsp;:&nbsp;int<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Distance&nbsp;of&nbsp;the&nbsp;top&nbsp;edge&nbsp;of&nbsp;the&nbsp;window&nbsp;from&nbsp;the&nbsp;top&nbsp;edge&nbsp;of<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;virtual&nbsp;desktop,&nbsp;in&nbsp;pixels.</tt></dd></dl>
+
+<dl><dt><a name="PopupModal-set_max_size"><strong>set_max_size</strong></a>(self, width: float, height: float)</dt><dd><tt>Wrap&nbsp;the&nbsp;Pyglet&nbsp;window&nbsp;call&nbsp;to&nbsp;set&nbsp;maximum&nbsp;size<br>
+&nbsp;<br>
+:param&nbsp;float&nbsp;width:&nbsp;width&nbsp;in&nbsp;pixels.<br>
+:param&nbsp;float&nbsp;height:&nbsp;height&nbsp;in&nbsp;pixels.<br>
+:Raises&nbsp;ValueError:</tt></dd></dl>
 
 <dl><dt><a name="PopupModal-set_maximum_size"><strong>set_maximum_size</strong></a>(self, width, height)</dt><dd><tt>Set&nbsp;the&nbsp;maximum&nbsp;size&nbsp;of&nbsp;the&nbsp;window.<br>
 &nbsp;<br>
@@ -326,6 +245,11 @@ The&nbsp;window&nbsp;size&nbsp;does&nbsp;not&nbsp;include&nbsp;the&nbsp;border&n
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maximum&nbsp;width&nbsp;of&nbsp;the&nbsp;window,&nbsp;in&nbsp;pixels.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`height`&nbsp;:&nbsp;int<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maximum&nbsp;height&nbsp;of&nbsp;the&nbsp;window,&nbsp;in&nbsp;pixels.</tt></dd></dl>
+
+<dl><dt><a name="PopupModal-set_min_size"><strong>set_min_size</strong></a>(self, width: float, height: float)</dt><dd><tt>Wrap&nbsp;the&nbsp;Pyglet&nbsp;window&nbsp;call&nbsp;to&nbsp;set&nbsp;minimum&nbsp;size<br>
+&nbsp;<br>
+:param&nbsp;float&nbsp;width:&nbsp;width&nbsp;in&nbsp;pixels.<br>
+:param&nbsp;float&nbsp;height:&nbsp;height&nbsp;in&nbsp;pixels.</tt></dd></dl>
 
 <dl><dt><a name="PopupModal-set_minimum_size"><strong>set_minimum_size</strong></a>(self, width, height)</dt><dd><tt>Set&nbsp;the&nbsp;minimum&nbsp;size&nbsp;of&nbsp;the&nbsp;window.<br>
 &nbsp;<br>
@@ -356,7 +280,32 @@ Applications&nbsp;should&nbsp;not&nbsp;normally&nbsp;need&nbsp;to&nbsp;call&nbsp
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;the&nbsp;current&nbsp;exclusive&nbsp;mode&nbsp;and&nbsp;cursor&nbsp;type.&nbsp;&nbsp;Otherwise,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;bool&nbsp;value&nbsp;will&nbsp;override&nbsp;and&nbsp;force&nbsp;a&nbsp;visibility.</tt></dd></dl>
 
-<dl><dt><a name="PopupModal-set_mouse_position"><strong>set_mouse_position</strong></a>(self, x, y, absolute=False)</dt></dl>
+<dl><dt><a name="PopupModal-set_mouse_visible"><strong>set_mouse_visible</strong></a>(self, visible: bool = True)</dt><dd><tt>If&nbsp;true,&nbsp;user&nbsp;can&nbsp;see&nbsp;the&nbsp;mouse&nbsp;cursor&nbsp;while&nbsp;it&nbsp;is&nbsp;over&nbsp;the&nbsp;window.&nbsp;Set&nbsp;false,<br>
+the&nbsp;mouse&nbsp;is&nbsp;not&nbsp;visible.&nbsp;Default&nbsp;is&nbsp;true.<br>
+&nbsp;<br>
+:param&nbsp;bool&nbsp;visible:</tt></dd></dl>
+
+<dl><dt><a name="PopupModal-set_size"><strong>set_size</strong></a>(self, width: float, height: float)</dt><dd><tt>Ignore&nbsp;the&nbsp;resizable&nbsp;flag&nbsp;and&nbsp;set&nbsp;the&nbsp;size<br>
+&nbsp;<br>
+:param&nbsp;float&nbsp;width:<br>
+:param&nbsp;float&nbsp;height:</tt></dd></dl>
+
+<dl><dt><a name="PopupModal-set_update_rate"><strong>set_update_rate</strong></a>(self, rate: float)</dt><dd><tt>Set&nbsp;how&nbsp;often&nbsp;the&nbsp;screen&nbsp;should&nbsp;be&nbsp;updated.<br>
+For&nbsp;example,&nbsp;self.<a href="#PopupModal-set_update_rate">set_update_rate</a>(1&nbsp;/&nbsp;60)&nbsp;will&nbsp;set&nbsp;the&nbsp;update&nbsp;rate&nbsp;to&nbsp;60&nbsp;fps<br>
+&nbsp;<br>
+:param&nbsp;float&nbsp;rate:&nbsp;Update&nbsp;frequency&nbsp;in&nbsp;seconds</tt></dd></dl>
+
+<dl><dt><a name="PopupModal-set_viewport"><strong>set_viewport</strong></a>(self, left: float, right: float, bottom: float, top: float)</dt><dd><tt>Set&nbsp;the&nbsp;viewport.&nbsp;(What&nbsp;coordinates&nbsp;we&nbsp;can&nbsp;see.<br>
+Used&nbsp;to&nbsp;scale&nbsp;and/or&nbsp;scroll&nbsp;the&nbsp;screen.)<br>
+&nbsp;<br>
+:param&nbsp;Number&nbsp;left:<br>
+:param&nbsp;Number&nbsp;right:<br>
+:param&nbsp;Number&nbsp;bottom:<br>
+:param&nbsp;Number&nbsp;top:</tt></dd></dl>
+
+<dl><dt><a name="PopupModal-set_visible"><strong>set_visible</strong></a>(self, visible=True)</dt><dd><tt>Set&nbsp;if&nbsp;the&nbsp;window&nbsp;is&nbsp;visible&nbsp;or&nbsp;not.&nbsp;Normally,&nbsp;a&nbsp;program's&nbsp;window&nbsp;is&nbsp;visible.<br>
+&nbsp;<br>
+:param&nbsp;bool&nbsp;visible:</tt></dd></dl>
 
 <dl><dt><a name="PopupModal-set_vsync"><strong>set_vsync</strong></a>(self, vsync)</dt><dd><tt>Enable&nbsp;or&nbsp;disable&nbsp;vertical&nbsp;sync&nbsp;control.<br>
 &nbsp;<br>
@@ -377,6 +326,8 @@ when&nbsp;the&nbsp;window&nbsp;is&nbsp;positioned&nbsp;outside&nbsp;of&nbsp;the&
 &nbsp;&nbsp;&nbsp;&nbsp;`vsync`&nbsp;:&nbsp;bool<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;True,&nbsp;vsync&nbsp;is&nbsp;enabled,&nbsp;otherwise&nbsp;it&nbsp;is&nbsp;disabled.</tt></dd></dl>
 
+<dl><dt><a name="PopupModal-show_view"><strong>show_view</strong></a>(self, new_view: 'View')</dt></dl>
+
 <dl><dt><a name="PopupModal-switch_to"><strong>switch_to</strong></a>(self)</dt><dd><tt>Make&nbsp;this&nbsp;window&nbsp;the&nbsp;current&nbsp;OpenGL&nbsp;rendering&nbsp;context.<br>
 &nbsp;<br>
 Only&nbsp;one&nbsp;OpenGL&nbsp;context&nbsp;can&nbsp;be&nbsp;active&nbsp;at&nbsp;a&nbsp;time.&nbsp;&nbsp;This&nbsp;method&nbsp;sets<br>
@@ -384,6 +335,45 @@ the&nbsp;current&nbsp;window's&nbsp;context&nbsp;to&nbsp;be&nbsp;current.&nbsp;&
 method&nbsp;in&nbsp;preference&nbsp;to&nbsp;`pyglet.gl.Context.set_current`,&nbsp;as&nbsp;it&nbsp;may<br>
 perform&nbsp;additional&nbsp;initialisation&nbsp;functions.</tt></dd></dl>
 
+<dl><dt><a name="PopupModal-test"><strong>test</strong></a>(self, frames: int = 10)</dt><dd><tt>Used&nbsp;by&nbsp;unit&nbsp;test&nbsp;cases.&nbsp;Runs&nbsp;the&nbsp;event&nbsp;loop&nbsp;a&nbsp;few&nbsp;times&nbsp;and&nbsp;stops.<br>
+&nbsp;<br>
+:param&nbsp;int&nbsp;frames:</tt></dd></dl>
+
+<dl><dt><a name="PopupModal-update"><strong>update</strong></a>(self, delta_time: float)</dt><dd><tt>Move&nbsp;everything.&nbsp;For&nbsp;better&nbsp;consistency&nbsp;in&nbsp;naming,&nbsp;use&nbsp;``on_update``&nbsp;instead.<br>
+&nbsp;<br>
+:param&nbsp;float&nbsp;delta_time:&nbsp;Time&nbsp;interval&nbsp;since&nbsp;the&nbsp;last&nbsp;time&nbsp;the&nbsp;function&nbsp;was&nbsp;called&nbsp;in&nbsp;seconds.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="pyglet.window.win32.html#Win32Window">pyglet.window.win32.Win32Window</a>:<br>
+<dl><dt><a name="PopupModal-close"><strong>close</strong></a>(self)</dt><dd><tt>Close&nbsp;the&nbsp;window.<br>
+&nbsp;<br>
+After&nbsp;closing&nbsp;the&nbsp;window,&nbsp;the&nbsp;GL&nbsp;context&nbsp;will&nbsp;be&nbsp;invalid.&nbsp;&nbsp;The<br>
+window&nbsp;instance&nbsp;cannot&nbsp;be&nbsp;reused&nbsp;once&nbsp;closed&nbsp;(see&nbsp;also&nbsp;`set_visible`).<br>
+&nbsp;<br>
+The&nbsp;`pyglet.app.EventLoop.on_window_close`&nbsp;event&nbsp;is&nbsp;dispatched&nbsp;on<br>
+`pyglet.app.event_loop`&nbsp;when&nbsp;this&nbsp;method&nbsp;is&nbsp;called.</tt></dd></dl>
+
+<dl><dt><a name="PopupModal-dispatch_pending_events"><strong>dispatch_pending_events</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PopupModal-set_icon"><strong>set_icon</strong></a>(self, *images)</dt><dd><tt>Set&nbsp;the&nbsp;window&nbsp;icon.<br>
+&nbsp;<br>
+If&nbsp;multiple&nbsp;images&nbsp;are&nbsp;provided,&nbsp;one&nbsp;with&nbsp;an&nbsp;appropriate&nbsp;size<br>
+will&nbsp;be&nbsp;selected&nbsp;(if&nbsp;the&nbsp;correct&nbsp;size&nbsp;is&nbsp;not&nbsp;provided,&nbsp;the&nbsp;image<br>
+will&nbsp;be&nbsp;scaled).<br>
+&nbsp;<br>
+Useful&nbsp;sizes&nbsp;to&nbsp;provide&nbsp;are&nbsp;16x16,&nbsp;32x32,&nbsp;64x64&nbsp;(Mac&nbsp;only)&nbsp;and<br>
+128x128&nbsp;(Mac&nbsp;only).<br>
+&nbsp;<br>
+:Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`images`&nbsp;:&nbsp;sequence&nbsp;of&nbsp;`pyglet.image.AbstractImage`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;of&nbsp;images&nbsp;to&nbsp;use&nbsp;for&nbsp;the&nbsp;window&nbsp;icon.</tt></dd></dl>
+
+<dl><dt><a name="PopupModal-set_mouse_position"><strong>set_mouse_position</strong></a>(self, x, y, absolute=False)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="pyglet.window.win32.html#Win32Window">pyglet.window.win32.Win32Window</a>:<br>
+<dl><dt><strong>vsync</strong></dt>
+</dl>
 <hr>
 Methods inherited from <a href="pyglet.window.html#BaseWindow">pyglet.window.BaseWindow</a>:<br>
 <dl><dt><a name="PopupModal-__del__"><strong>__del__</strong></a>(self)</dt></dl>
@@ -433,6 +423,18 @@ There&nbsp;is&nbsp;little&nbsp;need&nbsp;to&nbsp;override&nbsp;this&nbsp;method;
 :py:class:`MouseCursor`&nbsp;and&nbsp;provide&nbsp;your&nbsp;own<br>
 :py:meth:`~MouseCursor.draw`&nbsp;method.</tt></dd></dl>
 
+<dl><dt><a name="PopupModal-get_framebuffer_size"><strong>get_framebuffer_size</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;size&nbsp;in&nbsp;actual&nbsp;pixels&nbsp;of&nbsp;the&nbsp;<a href="arcade.application.html#Window">Window</a>&nbsp;framebuffer.<br>
+&nbsp;<br>
+When&nbsp;using&nbsp;HiDPI&nbsp;screens,&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;<a href="arcade.application.html#Window">Window</a>'s&nbsp;framebuffer<br>
+can&nbsp;be&nbsp;higher&nbsp;than&nbsp;that&nbsp;of&nbsp;the&nbsp;<a href="arcade.application.html#Window">Window</a>&nbsp;size&nbsp;requested.&nbsp;If&nbsp;you<br>
+are&nbsp;performing&nbsp;operations&nbsp;that&nbsp;require&nbsp;knowing&nbsp;the&nbsp;actual&nbsp;number<br>
+of&nbsp;pixels&nbsp;in&nbsp;the&nbsp;window,&nbsp;this&nbsp;method&nbsp;should&nbsp;be&nbsp;used&nbsp;instead&nbsp;of<br>
+:py:func:`<a href="arcade.application.html#Window">Window</a>.<a href="#PopupModal-get_size">get_size</a>()`.&nbsp;For&nbsp;example,&nbsp;setting&nbsp;the&nbsp;<a href="arcade.application.html#Window">Window</a><br>
+projection&nbsp;or&nbsp;setting&nbsp;the&nbsp;glViewport&nbsp;size.<br>
+&nbsp;<br>
+:rtype:&nbsp;(int,&nbsp;int)<br>
+:return:&nbsp;The&nbsp;width&nbsp;and&nbsp;height&nbsp;of&nbsp;the&nbsp;<a href="arcade.application.html#Window">Window</a>&nbsp;viewport,&nbsp;in&nbsp;pixels.</tt></dd></dl>
+
 <dl><dt><a name="PopupModal-get_pixel_ratio"><strong>get_pixel_ratio</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;framebuffer/window&nbsp;size&nbsp;ratio.<br>
 &nbsp;<br>
 Some&nbsp;platforms&nbsp;and/or&nbsp;window&nbsp;systems&nbsp;support&nbsp;subpixel&nbsp;scaling,<br>
@@ -446,6 +448,8 @@ Fractional&nbsp;values&nbsp;between&nbsp;1.0&nbsp;and&nbsp;2.0,&nbsp;as&nbsp;wel
 &nbsp;<br>
 :rtype:&nbsp;float<br>
 :return:&nbsp;The&nbsp;framebuffer/window&nbsp;size&nbsp;ratio</tt></dd></dl>
+
+<dl><dt><a name="PopupModal-get_viewport_size"><strong>get_viewport_size</strong></a> = <a href="#PopupModal-get_framebuffer_size">get_framebuffer_size</a>(self)</dt></dl>
 
 <dl><dt><a name="PopupModal-on_close"><strong>on_close</strong></a>(self)</dt><dd><tt>Default&nbsp;on_close&nbsp;handler.</tt></dd></dl>
 
@@ -558,12 +562,6 @@ Read-only.<br>
 </dl>
 <dl><dt><strong>visible</strong></dt>
 <dd><tt>True&nbsp;if&nbsp;the&nbsp;window&nbsp;is&nbsp;currently&nbsp;visible.&nbsp;&nbsp;Read-only.<br>
-&nbsp;<br>
-:type:&nbsp;bool</tt></dd>
-</dl>
-<dl><dt><strong>vsync</strong></dt>
-<dd><tt>True&nbsp;if&nbsp;buffer&nbsp;flips&nbsp;are&nbsp;synchronised&nbsp;to&nbsp;the&nbsp;screen's&nbsp;vertical<br>
-retrace.&nbsp;&nbsp;Read-only.<br>
 &nbsp;<br>
 :type:&nbsp;bool</tt></dd>
 </dl>

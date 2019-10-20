@@ -8,7 +8,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>board</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/grantgollier/OneDrive%20-%20The%20University%20of%20Kansas/EECS448/Battleship/board.py">/Users/grantgollier/OneDrive - The University of Kansas/EECS448/Battleship/board.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5C448%5Cbattleship-1%5Cboard.py">c:\448\battleship-1\board.py</a></font></td></tr></table>
     <p><tt><a href="#Board">Board</a>&nbsp;module&nbsp;containing&nbsp;the&nbsp;<a href="#Board">Board</a>&nbsp;class&nbsp;and<br>
 an&nbsp;enum&nbsp;for&nbsp;the&nbsp;states&nbsp;that&nbsp;a&nbsp;cell&nbsp;on&nbsp;the&nbsp;board&nbsp;can&nbsp;be&nbsp;in,&nbsp;<a href="#CellStatus">CellStatus</a>.</tt></p>
 <p>
@@ -61,6 +61,14 @@ all&nbsp;hits&nbsp;or&nbsp;misses&nbsp;and&nbsp;the&nbsp;second&nbsp;element&nbs
 &nbsp;<br>
 :pre:&nbsp;length,&nbsp;origin,&nbsp;and&nbsp;direction&nbsp;are&nbsp;valid<br>
 :post:&nbsp;Appends&nbsp;a&nbsp;ship&nbsp;with&nbsp;the&nbsp;specified&nbsp;fields&nbsp;to&nbsp;the&nbsp;self.<strong>ships</strong>&nbsp;list</tt></dd></dl>
+
+<dl><dt><a name="Board-search"><strong>search</strong></a>(self, x_pos: int, y_pos: int) -&gt; bool</dt><dd><tt>Handles&nbsp;when&nbsp;the&nbsp;current&nbsp;board&nbsp;is&nbsp;attacked&nbsp;by&nbsp;another&nbsp;player<br>
+&nbsp;<br>
+:param:&nbsp;x_pos&nbsp;(int):&nbsp;x&nbsp;position&nbsp;of&nbsp;where&nbsp;the&nbsp;shot&nbsp;is&nbsp;fired&nbsp;(0&nbsp;indexed)<br>
+:param:&nbsp;y_pos&nbsp;(int):&nbsp;y&nbsp;position&nbsp;of&nbsp;where&nbsp;the&nbsp;shot&nbsp;is&nbsp;fired&nbsp;(0&nbsp;indexed)<br>
+:return:&nbsp;returns&nbsp;whether&nbsp;the&nbsp;shot&nbsp;hit&nbsp;a&nbsp;ship&nbsp;or&nbsp;not</tt></dd></dl>
+
+<dl><dt><a name="Board-until_sunk"><strong>until_sunk</strong></a>(self, x_pos: int, y_pos: int) -&gt; bool</dt></dl>
 
 <hr>
 Data descriptors defined here:<br>

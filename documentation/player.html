@@ -8,7 +8,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>player</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/grantgollier/OneDrive%20-%20The%20University%20of%20Kansas/EECS448/Battleship/player.py">/Users/grantgollier/OneDrive - The University of Kansas/EECS448/Battleship/player.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5C448%5Cbattleship-1%5Cplayer.py">c:\448\battleship-1\player.py</a></font></td></tr></table>
     <p><tt><a href="#Player">Player</a>&nbsp;module&nbsp;containing&nbsp;the&nbsp;<a href="#Player">Player</a>&nbsp;class.&nbsp;Manages&nbsp;if&nbsp;the&nbsp;player&nbsp;has&nbsp;lost&nbsp;or&nbsp;not.</tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -44,6 +44,13 @@
 :pre:&nbsp;The&nbsp;calling&nbsp;class&nbsp;knows&nbsp;how&nbsp;many&nbsp;ships&nbsp;the&nbsp;users&nbsp;want&nbsp;to&nbsp;play&nbsp;with</tt></dd></dl>
 
 <dl><dt><a name="Player-be_attacked"><strong>be_attacked</strong></a>(self, x_pos: int, y_pos: int) -&gt; bool</dt><dd><tt>Decrements&nbsp;amount&nbsp;of&nbsp;ship&nbsp;blocks&nbsp;available&nbsp;when&nbsp;player&nbsp;is&nbsp;attacked<br>
+:param:&nbsp;x_pos&nbsp;(int):&nbsp;the&nbsp;x&nbsp;position&nbsp;of&nbsp;the&nbsp;mouse&nbsp;click<br>
+:param:&nbsp;y_pos&nbsp;(int):&nbsp;the&nbsp;y&nbsp;position&nbsp;of&nbsp;the&nbsp;mouse&nbsp;click<br>
+:return:&nbsp;bool&nbsp;-&nbsp;true&nbsp;if&nbsp;hit,&nbsp;false&nbsp;if&nbsp;not<br>
+&nbsp;<br>
+:post:&nbsp;Game&nbsp;now&nbsp;knows&nbsp;whether&nbsp;or&nbsp;not&nbsp;the&nbsp;player&nbsp;has&nbsp;been&nbsp;attacked</tt></dd></dl>
+
+<dl><dt><a name="Player-be_search"><strong>be_search</strong></a>(self, x_pos: int, y_pos: int) -&gt; bool</dt><dd><tt>Decrements&nbsp;amount&nbsp;of&nbsp;ship&nbsp;blocks&nbsp;available&nbsp;when&nbsp;player&nbsp;is&nbsp;attacked<br>
 :param:&nbsp;x_pos&nbsp;(int):&nbsp;the&nbsp;x&nbsp;position&nbsp;of&nbsp;the&nbsp;mouse&nbsp;click<br>
 :param:&nbsp;y_pos&nbsp;(int):&nbsp;the&nbsp;y&nbsp;position&nbsp;of&nbsp;the&nbsp;mouse&nbsp;click<br>
 :return:&nbsp;bool&nbsp;-&nbsp;true&nbsp;if&nbsp;hit,&nbsp;false&nbsp;if&nbsp;not<br>

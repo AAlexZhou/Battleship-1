@@ -7,3 +7,9 @@ for graphical interaction. Specifically used the following example projects to b
 - [Text Buttons](http://arcade.academy/examples/gui_text_button.html?highlight=text%20buttons)
 
 Sound effects came from the macOS Text to Speech Tool (Open for non-commercial uses).
+
+Used Team KRAAG's BattleShip project, updated with several features:
+- Three different level modes of AI: easy/ medium/ hard
+- ScoreBoard
+- Special Shots
+- Bug Fixed

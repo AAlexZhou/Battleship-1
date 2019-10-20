@@ -1,17 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<html><head><title>Python: module game</title>
+<html><head><title>Python: module aigame</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head><body bgcolor="#f0f0f8">
 
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
 <tr bgcolor="#7799ee">
 <td valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>game</strong></big></big></font></td
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>aigame</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5C448%5Cbattleship-1%5Cgame.py">c:\448\battleship-1\game.py</a></font></td></tr></table>
-    <p><tt><a href="#Game">Game</a>&nbsp;module&nbsp;containing&nbsp;the&nbsp;<a href="#Game">Game</a>&nbsp;class&nbsp;and<br>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5C448%5Cbattleship-1%5Caigame.py">c:\448\battleship-1\aigame.py</a></font></td></tr></table>
+    <p><tt>AI&nbsp;Game&nbsp;module&nbsp;containing&nbsp;the&nbsp;Game&nbsp;class&nbsp;for&nbsp;AI&nbsp;and<br>
 the&nbsp;SetUp&nbsp;class&nbsp;which&nbsp;gets&nbsp;the&nbsp;information&nbsp;needed&nbsp;for<br>
-<a href="#Game">Game</a>&nbsp;to&nbsp;initialize</tt></p>
+AI&nbsp;to&nbsp;initialize&nbsp;the&nbsp;easy-level&nbsp;game</tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#aa55cc">
@@ -32,7 +32,7 @@ the&nbsp;SetUp&nbsp;class&nbsp;which&nbsp;gets&nbsp;the&nbsp;information&nbsp;ne
 <dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
 </font></dt><dd>
 <dl>
-<dt><font face="helvetica, arial"><a href="game.html#Game">Game</a>
+<dt><font face="helvetica, arial"><a href="aigame.html#aiGame">aiGame</a>
 </font></dt></dl>
 </dd>
 </dl>
@@ -40,32 +40,37 @@ the&nbsp;SetUp&nbsp;class&nbsp;which&nbsp;gets&nbsp;the&nbsp;information&nbsp;ne
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#000000" face="helvetica, arial"><a name="Game">class <strong>Game</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+<font color="#000000" face="helvetica, arial"><a name="aiGame">class <strong>aiGame</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
-<td colspan=2><tt><a href="#Game">Game</a>(player1:&nbsp;player.Player,&nbsp;player2:&nbsp;player.Player)<br>
+<td colspan=2><tt><a href="#aiGame">aiGame</a>(player1:&nbsp;player.Player,&nbsp;player2:&nbsp;player.Player)<br>
 &nbsp;<br>
-<a href="#Game">Game</a>&nbsp;manages&nbsp;the&nbsp;flow&nbsp;of&nbsp;the&nbsp;game&nbsp;and&nbsp;the&nbsp;GUI&nbsp;and&nbsp;controls&nbsp;BoardWindow.<br>&nbsp;</tt></td></tr>
+<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
-<dl><dt><a name="Game-__init__"><strong>__init__</strong></a>(self, player1: player.Player, player2: player.Player)</dt><dd><tt>Constructs&nbsp;a&nbsp;new&nbsp;<a href="#Game">Game</a>&nbsp;<a href="builtins.html#object">object</a>.&nbsp;creates&nbsp;and&nbsp;instance&nbsp;of&nbsp;the&nbsp;main&nbsp;menu&nbsp;window.<br>
+<dl><dt><a name="aiGame-__init__"><strong>__init__</strong></a>(self, player1: player.Player, player2: player.Player)</dt><dd><tt>Constructs&nbsp;a&nbsp;new&nbsp;Game&nbsp;<a href="builtins.html#object">object</a>.&nbsp;Creates&nbsp;an&nbsp;instance&nbsp;of&nbsp;the&nbsp;main&nbsp;menu&nbsp;window.<br>
 :param:&nbsp;player1&nbsp;(Player)&nbsp;-&nbsp;player&nbsp;1&nbsp;in&nbsp;the&nbsp;game<br>
-:param:&nbsp;player2&nbsp;(Player)&nbsp;-&nbsp;player&nbsp;2&nbsp;in&nbsp;the&nbsp;game<br>
+:param:&nbsp;AI&nbsp;in&nbsp;the&nbsp;game<br>
+&nbsp;<br>
 :return:&nbsp;returns&nbsp;none.<br>
 &nbsp;<br>
-:pre:&nbsp;Both&nbsp;Players&nbsp;have&nbsp;been&nbsp;initalized&nbsp;already&nbsp;with&nbsp;ships&nbsp;placed</tt></dd></dl>
+:pre:&nbsp;Both&nbsp;Players&nbsp;(Player&nbsp;2&nbsp;is&nbsp;AI&nbsp;in&nbsp;this&nbsp;case)&nbsp;have&nbsp;been&nbsp;initialized&nbsp;already&nbsp;with&nbsp;ships&nbsp;placed<br>
+:post&nbsp;AI&nbsp;windows&nbsp;setup</tt></dd></dl>
 
-<dl><dt><a name="Game-end_game"><strong>end_game</strong></a>(self)</dt><dd><tt>Shows&nbsp;the&nbsp;endgame&nbsp;screen&nbsp;and&nbsp;announces&nbsp;the&nbsp;winner<br>
+<dl><dt><a name="aiGame-end_game"><strong>end_game</strong></a>(self)</dt><dd><tt>Shows&nbsp;the&nbsp;endgame&nbsp;screen&nbsp;and&nbsp;announces&nbsp;the&nbsp;winner<br>
 :return:&nbsp;returns&nbsp;none.<br>
 &nbsp;<br>
+:pre&nbsp;the&nbsp;function&nbsp;_init_&nbsp;compiles&nbsp;successfully<br>
 :post:&nbsp;Application&nbsp;exists</tt></dd></dl>
 
-<dl><dt><a name="Game-on_turn_end"><strong>on_turn_end</strong></a>(self)</dt><dd><tt>Handles&nbsp;switching&nbsp;player&nbsp;states&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;a&nbsp;turn<br>
+<dl><dt><a name="aiGame-on_turn_end"><strong>on_turn_end</strong></a>(self)</dt><dd><tt>Handles&nbsp;switching&nbsp;player&nbsp;states&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;a&nbsp;turn<br>
 &nbsp;<br>
 :return:&nbsp;None<br>
-:post:&nbsp;Switches&nbsp;current&nbsp;player&nbsp;and&nbsp;toggles&nbsp;self.<strong>turn_over</strong></tt></dd></dl>
+:pre&nbsp;scoreboard&nbsp;function&nbsp;runs&nbsp;successfully<br>
+:post:&nbsp;Switches&nbsp;current&nbsp;player&nbsp;and&nbsp;toggles&nbsp;self.<strong>turn_over</strong>.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Also&nbsp;announce&nbsp;the&nbsp;score&nbsp;for&nbsp;each&nbsp;player&nbsp;on&nbsp;scoreboard</tt></dd></dl>
 
-<dl><dt><a name="Game-run"><strong>run</strong></a>(self, _)</dt><dd><tt>Handles&nbsp;the&nbsp;flow&nbsp;of&nbsp;the&nbsp;game&nbsp;and&nbsp;deciding&nbsp;when&nbsp;to&nbsp;switch&nbsp;turns<br>
+<dl><dt><a name="aiGame-run"><strong>run</strong></a>(self, _)</dt><dd><tt>Handles&nbsp;the&nbsp;flow&nbsp;of&nbsp;the&nbsp;game&nbsp;and&nbsp;deciding&nbsp;when&nbsp;to&nbsp;switch&nbsp;turns<br>
 :return:&nbsp;returns&nbsp;none<br>
 &nbsp;<br>
 :post:&nbsp;If&nbsp;between&nbsp;turns&nbsp;swaps&nbsp;what&nbsp;board&nbsp;is&nbsp;viewed,&nbsp;If&nbsp;game&nbsp;is&nbsp;over,&nbsp;ends&nbsp;game</tt></dd></dl>
